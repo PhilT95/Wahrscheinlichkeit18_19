@@ -1,0 +1,866 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[explicit]{titlesec}
+\usepackage{ulem}
+\usepackage{dirtytalk}
+\usepackage{color}
+\usepackage{leftidx}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+\usepackage[
+top=2.5cm,
+bottom=2.5cm,
+left=2.5cm,
+right=2.5cm,
+headheight=15pt,
+includehead,
+includefoot,
+heightrounded]{geometry}
+
+\setstretch{1}
+
+\pagestyle{fancy}
+\fancyhead[C]{\rule{4\textwidth}{5\baselineskip}}
+%\setlength{\headheight}{52pt}
+\fancyhf{}
+\rhead{\today}
+\lhead{WT Vorlesung 18/19}
+\chead{Phil Trommer}
+\rfoot{Seite \thepage}
+
+
+
+\renewcommand{\thefootnote}{\roman{footnote}}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}
+  {1em}
+  {\uline{#1}}  
+ 
+\pagenumbering{arabic}
+  
+\newcommand{\newpara}{\vskip 0.5cm}
+\newcommand*{\textcal}[1]{\textit{\fontfamily{qzc}\selectfont#1}}
+
+
+\author{Phil Trommer}
+\title{Wahrscheinlichkeitstheorie anhand der Vorlesung  \\von Dr. Arleta Szkola,\\ Universität Leipzig}
+
+\begin{document}
+\setlength{\parindent}{0cm}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\part{Einleitung}
+	\section*{Inhalte}
+	\begin{itemize}
+		\item Wahrscheinlichkeitstheorie
+		\item mathematische Statistik
+		\item beide unter dem Begriff \textit{Stochastik} zusammengefasst
+	\end{itemize}
+\newpara
+	\section*{Literaturempfehlungen}
+	\begin{itemize}
+		\item Hans-Otto-Georgii : \say{Stochastik}
+	\end{itemize}
+\newpara
+	\section*{Ausgangsfrage:}
+		Ist Zufall etwas fundamentales?
+	\section*{Zentrale Frage: }
+		Was ist die \textbf{WS} ( Wahrscheinlichkeit) eines zufälligen Ereignisses? \newline
+		Ursprünglich existierten folgenden 2 Definitionen.
+		\subsection*{(1) Frequentistische Definition: }
+			Die WS eines zufälligen Ereignisses ist der Grenzwert der relativen Häufigkeit des Eintretens 						dieses Ereignisses bei vielen Wiederholungen.
+		\subsection*{(2) Bayes'sche Definition: }
+			Die WS eines zufälligen Ereignisses ist ein Maß dafür, wie stark man vom Eintreten dieses 							Ereignisses überzeugt ist.
+	\section*{Moderner Zugang}
+	\begin{itemize}
+		\item Der moderne Zugang geht auf Alexander Kolmogorov zurück\\
+		$\hookrightarrow$ \textit{Kolmogorov'schen Axiome}
+		\begin{itemize}
+			\item[- A1] Die WS eines Ereignisses ist eine reele Zahl x mit $0 \leq\ x \leq\ 1$
+			\item[- A2] Das sichere Ereignis hat die WS = 1
+			\item[- A3] Eine abzählbare Vereinigung sich gegenseitig ausschließender Ereignisse hat die WS 
+			gleich der Summe der einzelnen WS.
+			\item[-   ] Diese Axiome bilden die Grundlage der modernen Formulierung der \textbf{WT} (	 						Wahrscheinlichkeitstheorie) \newline
+			\say{moderne Formulierung} \newline
+			$\hookrightarrow$ basiert auf dem Konzept des \textit{W-Raumes} (Wahrscheinlichkeitsraum)			
+		\end{itemize}
+		\item Sei $\Omega$ (Omega) eine Menge (die Elemente heißen \textit{Elementarereignisse})
+		\begin{itemize}
+			\item Sei A ein geeignetes System von Teilmengen von $\Omega$ ( diese Mengen heißen 								\textit{Ereignisse})
+			\item Und sei\space\space P: \textit{A} $\rightarrow$  [0,1] eine Abbildung\newline
+			$\hookrightarrow$ \textit{W-Maß} (Wahrscheinlichkeitsmaß)
+			\item Die Abbildung P erfüllt dabei diese Rechenregeln:
+			\begin{itemize}
+				\item[(i)   ] $P\left(\Omega\right)$ = 1
+				\item[(ii)  ] $P(A^\complement) = 1 - P(A)$ , 
+				mit $A^\complement = \Omega\setminus A$ und 
+				$\forall A \in \textit{A}$
+				\item[(iii) ] $P\left(\bigcup_{n\in \mathbb{N}}A_{n}\right) \leq \sum_{n\in \mathbb{N}}
+				P(A_{n})$, \space\space\space $A_{n}\in \textit{A}$ 				
+			\end{itemize}						
+		\end{itemize}
+		\item Damit heißt ($\Omega$, \textit{A} , P) ein W-Raum.
+	\end{itemize}
+\newpage
+\part{Thematischer Vorlesungsbeginn}
+\newpara
+\section{Laplace - Modell}
+	$\hookrightarrow$ einfachstes Modell für ein Zufallsexperiment
+\newpara
+	Sei $\Omega$ eine Menge
+	\par
+	\begingroup
+	\leftskip=2cm % ggf. verstellen
+		\noindent $\hookrightarrow \Omega$ ist Ergebnismenge eines Zufallsexperimentes, wenn $\Omega$ alle 
+		möglichen Ausgänge des Experiments erfasst \newline
+		$\hookrightarrow$ jedes $\omega\in\Omega$ ist ein mögliches Ergebnis/Ausgang welches
+ 		\textit{Elemtarereignis}
+		
+		genannt wird. 
+	\par
+	\endgroup
+	Ist $\Omega$ eine höchstens abzählbare Menge, dann heißt jede Teilmenge E  
+	von $\Omega$ ein Ereignis. \newline			
+	($\forall E\in\mathcal{P}(\Omega)$ ist ein Ereignis)
+	\subsection{Definition}
+	Ein Zufallsexperiment heißt \textit{Laplace-Experiment} der Ordnung $N\in\mathbb{N}$, wenn die 						Ergebnissmenge $\Omega$ endlich ist mit |$\Omega$| = N und die Elementarereignisse alle 							gleichwahrscheinlich sind, d.h. die WS für das Eintreten des Elementarereignisses $\omega\in\Omega$ ist
+	$\frac{1}{N}$. (Formal: 
+	$P({\omega}) = \frac{1}{N}$ \space , \space $\forall\omega\in\Omega$ ) 
+		\subsubsection*{Beispiel \say{Spielwürfel}}
+		$\hookrightarrow$ Augenzahlen 1 - 6 entsprechen den möglichen Ausgängen des Experiments
+		\par
+		\begingroup
+		\leftskip=2cm
+			\noindent $\hookrightarrow\Omega$ = \{1,2,3,4,5,6\} Ergebnismenge \newline
+			N = |$\Omega$| = 6 ist die Ordnung
+		\par
+		\endgroup
+		Im Laplace-Modell ist die WS für das Eintreten eines Ereignisses $E\in P(\Omega)$ gegeben
+		durch
+		\begin{center} 
+		\textbf{$P(E) = \frac{|E|}{N}$}				
+		\end{center}
+		Denn gemäß den \textit{A1} - \textit{A3} gilt \newline
+		$P(E) =_{A3} \sum_{\omega\in E}P({\omega}) = \sum_{\omega\in E}\frac{1}{N} = 
+		\frac{|E|}{N}$ \newline
+		Beispiel \newline
+		E: es fällt eine ungerade Augenzahl , \space\space E = \{1,3,5\} = $\{1\}\cup\{3\}\cup\{5\}$ 
+		$$\hookrightarrow P(E) = P(\{1,3,5\}) = P(\{1\}) + P(\{3\}) +
+		P(\{5\})$$ 
+		$$= \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{1}{2}$$ 		
+\newpage
+		Beispiel: \newline
+		A ist ein Alphabet mit 5 Buchstaben, d.h. |A| = 5 
+\newpara
+		Frage: \newline
+		Wie groß ist die WS, das ein zufällig gewähltes Wort der Länge 3 genau 2 verschiedene Buchstaben
+		enthält? \newline
+		Antwort: 
+		$$\Omega = A \times A \times A$$ 
+		$$|\Omega| = |A^3| = 125$$ 
+		Ereignis E: Wort der Länge 3 enthält genau 2 verschiedene Buchstaben
+		$$|E| = ? \quad |E| = 5 * 4 * 3 = 60 \newline$$
+		$\hookrightarrow$ Möglichkeiten, um das doppelt vorkommende Symbol zu wählen \newline
+		Daraus folgt $$P(E) = \frac{60}{125}$$ 
+\newpara
+		Beispiel: \say{Wiederholtes Werfen eines Spielwürfels} \newline
+		\begin{small}
+		(fair, 6-seitig)
+		\end{small} \newline
+		Der Würfel wird n -mal geworfen und jedes mal die Augenzahl notiert. \newline
+		$\hookrightarrow$ Es handelt sich um ein Laplace-Experiment der Ordnung N = ?
+		$$\hookrightarrow \Omega = \{1,...,6\}^n = \{1,...,6\} \times \{1,...,6\} \times .....$$
+		$$\hookrightarrow N = |\Omega| = 6^n$$
+		Für jedes $\omega = (\omega_{1},...,\omega_{1})\in\Omega$ gilt P(\{$\omega$\}) = $\frac{1}{6^n} =
+		6^{-n}$
+		Wir betrachten
+		\begin{itemize}
+			\item[a) ] $E_{i}$ : beim i-ten Wurf fällt die \say{6}
+			\item[b) ] $\tilde{E}_{i}$ : nur beim i-ten Wurf fällt die 6
+			\item[c) ] E : die 6 fällt genau einmal
+		\end{itemize}
+		Zu a)
+		$$E_{i} = \{\omega=(\omega_{1},...,\omega_{n})\in\Omega | \omega_{i} = 6\}$$
+		$$\Rightarrow |E_{i}| = 6^{n-i} \Rightarrow P(E_i) = \frac{6^{n-1}}{6^n} = \frac{1}{6}$$
+		Zu b)
+		$$\tilde{E}_i = \{\omega=(\omega_{1},...,\omega_{n})\in\Omega | \omega_i=6, w_k \neq 6,
+		\forall k \neq i\}$$
+		$$\Rightarrow |\tilde{E}_i| = 5^{n-i} * 1 \Rightarrow P(\tilde{E}_i) = \frac{5^{n-1}}{6^n} = 
+		\frac{1}{6} * \left(\frac{5}{6}\right)^{n-1}$$
+		Zu c)
+		$$E = \bigcup_{i=1}\tilde{E}_i = \tilde{E}_1 \cup \tilde{E}_2 \cup ... \cup \tilde{E}_n $$
+		$$\Rightarrow |E| = \sum_{i=1}^n|\tilde{E}_i| = n*5^{n-1} \Rightarrow P(E) = \frac{n}{6} *
+		\left(\frac{5}{6}\right)^{n-1}$$
+\newpara
+\newpara
+\section{Kombinatorik}
+	Unser Kontext: Laplace-Experiment \newline
+	$\hookrightarrow$ Formel für WS eines Ereignisses
+	$$E\subset\Omega \qquad P(E)=\frac{|E|}{|\Omega|}$$
+	Das Urnenmodel:
+	\begin{itemize}
+		\item Urne enthält endlich viele gleichartige (in Größe, Gewicht, etc.) Kugeln
+		\item Die Urne ist formal eine Menge \newline
+		$\hookrightarrow$ wir denken uns die Kugeln durchnummeriert
+		\item Die Kugeln werden nacheinander \textit{blind} der Urne entnommen
+	\end{itemize}
+	Man unterscheidet die Varianten:
+	\begin{itemize}
+		\item Wiederholtes Ziehen mit Zurücklegen
+		\item Wiederholtes Ziehen ohne Zurücklegen
+	\end{itemize}
+	Sowie
+	\begin{itemize}
+		\item mit Anordnung (unter Beachtung der Reihenfolge der Ausgänge der Einzelbeziehungen )
+		\item ohne Anordnung
+	\end{itemize}	
+	\begin{tikzpicture}[
+  	baseline,
+  	level distance=35mm,
+  	text depth=.5em,
+  	text height=.5em,
+  	bend angle = 15,
+  	auto,  	
+  	level 1/.style={sibling distance=18em},
+  	level 2/.style={sibling distance=8em}]
+  	\node (root) at (0,0) {$\hookrightarrow$ insgesamt 4 Varianten};
+  	\node (with) at (-3, -2) {mit Anordnung};
+  	\node (without) at (3, -2) {ohne Anordnung};
+  	\node (i) at (-5, -4) {mit Zurücklegen};
+  	\node (i2) at (-5, -4.5) {Var I};
+  	\node (i3) at (-5, -5) {$n^k$};
+  
+ 	 \node (ii) at (-1.75, -4) {ohne Zurücklegen};
+  	\node (ii2) at (-1.75, -4.5) {Var II};
+  	\node (ii3) at (-1.75, -5) {$\frac{n!}{(n-k)!}$};
+
+  	\node (iii) at (1.75, -4) {mit Zurücklegen};
+ 	\node (iii2) at (1.75, -4.5) {Var III};
+  	\node (iii3) at (1.75, -5) {$\binom{n}{k} = \frac{n!}{(n-k)!k!}$};
+
+  	\node (iv) at (5, -4) {ohne Zurücklegen};
+  	\node (iv2) at (5, -4.5) {Var IV};
+  	\node (iv3) at (5, -5) {$\binom{n+k-1}{k}$};
+
+  \draw (root) -- (with);
+  \draw (root) -- (without);
+  \draw (with) -- (i);
+  \draw (with) -- (ii);
+  \draw (without) -- (iii);
+  \draw (without) -- (iv);
+  
+	\end{tikzpicture}
+\newpage
+	Es gilt $|U| = n$ , k ist stetig
+	Zu Var I : \newline
+	\say{Anzahl der 7 stelligen Telefonnummern ($10^7$)} \newline
+	Zu Var II : \newline
+	\say{Platzierung der ersten 3 Gewinner eines Wettbewerbes mit n Teilnehmern} = $n*(n-1)(n-2)$ \newline
+	Zu Var IV : \newline
+	\say{Wahlergebnisse einer Wahl in Parteien \& k Wähler (mit je einer Stimme)} 
+	$$\Omega=\{(a_1,....,a_k), a_i\in\bigcup, \forall i=1,...,k$$
+	$$\text{und} \quad a_1\leq a_2 \leq a_3 \leq ... \leq a_k\}$$
+	$\hookrightarrow$ hiermit wirf die Vorgabe \say{ohne Anordnung} formuliert \newline
+	Betrachte auf $\Omega$ die Abbildung f, die durch folgende Vorschrift definiert ist.
+	$$(a_1,....,a_k)\rightarrow(a_1+0,a_2+1,a_3+2,...,a_k+k-1)$$
+	Die Abbildung f bildet $\Omega$ bijektiv auf $B = f(\Omega)$ ab, wobei
+	$$B=\left\{(b_1,...,b_k)|b_1<b_2<...<b_k, \quad b_i\in\bigcup_{n+k-1},\forall i=1,...k\right\}$$
+	Damit ist $|\Omega| = |B|$ ($\Omega$ und $B$ sind gleichmächtig). $B$ ist aber die Ergebnismenge des 
+	Zufallsexperimentes der Var III im Urnenmodell.
+	\paragraph{Wir beobachten: }
+	Die Ergebnismengen von Zufallsexperimenten die jeweils eine der Varianten im 
+	Urnenmodell entsprechen, lassen sich in der Form eines karthesischen Produktes von (endlichen) Mengen bzw.
+	einer Teilmenge davon, darstellen.
+\newpara
+	\subsection{Definition Karthesisches Produkt}
+		Seien $A,B$ zwei beliebige Mengen. Dann heißt
+		$$A\times B :=\{(a,b):a\in A, b\in B\}$$
+		karthesisches Produkt von A und B. Ist $k>2$ und $A_1,...A_k$ Mengen so definieren wir entsprechend
+		$$A_1\times ... \times A_k :=\{(a_1,...,a_k):a_i\in A_i,i=1,...,k\}$$
+		Sind $A_i=A,i=1,...,k$, so schreiben wir kurz $A^k$ für $A_1\times ... \times A_k$
+		Bemerkung: \newline
+		$(a,b)\in A\times B$ ist ein \textit{geordnetes Paar}.
+		$$\hookrightarrow (a,b) \neq  (b,a)$$
+		Wichtig ist die Unterscheidung zwischen $(a,b) und \{a,b\}$ da hier $\{a,b\}=\{b,a\}$ gilt.
+\newpara
+	\subsection{Definition Endlichkeit}
+	Eine Menge $A$ die nur endlich viele Elemente enthält, heißt \textit{endlich}. Sonst heißt sie
+	\textit{unendliche Menge}. Die Anzahl der Elemente einer endlichen Menge A wird \textit{Mächtigkeit} von
+	$A$ genannt und mit $|A|$ bezeichnet.
+\newpara
+	\subsection{Definition Mächtigkeit}
+	Zwei Mengen $A,B$ heißten \textit{gleichmächtig}, wenn eine bijektive Abbildung
+	$$f:A\rightarrow B$$
+	existiert.
+	\paragraph{Beispiel: } 
+	$\mathbb{N}$ und $\mathbb{Z}$ sind gleichmächtig, da folgende Abbildung bijektiv ist	
+	\[
+ 	f:\mathbb{N}\rightarrow\mathbb{Z},n\rightarrow f(n):=\left\{\begin{array}{lr}
+ 		\frac{n}{2} &,n \text{ gerade}\\
+ 		\frac{1-n}{2} &,n \text{ ungerade} 	
+ 	\end{array}\right.
+ 	\]
+	Explizite Darstellung der Ergebnismengen der Variante I-IV
+	\begin{itemize}
+		\item Var I: 
+		$$\{(a_1,...,a_k):a_i\in\{1,...,k\},\forall i=1,...,k\} = \{1,...,n\}^k=:\Omega_I$$
+		\item Var II:
+		$$\{(a_1,...,a_k)\in\{1,...,n\}^k:a_i\neq a_j \forall i,j=1,...,k\: \text{mit} \: i\neq j\} =:\Omega_{II}$$
+		\item Var III:
+		$$\{(a_1,...,a_k)\in\{1,...,n\}^k:a_1<a_2<...<a_k\}=:\Omega_{III}$$
+		\item Var IV:
+		$$\{(a_1,...,a_k)\in\{1,...,n\}^k:a_1\leq a_2\leq ...\leq a_k\}=:\Omega_{IV}$$
+		\item Baumdiagramm:
+	\end{itemize}		 	
+	\begin{tikzpicture}[
+  	baseline,
+  	level distance=15mm,
+  	text depth=.5em,
+  	text height=.5em,
+  	bend angle = 15,
+  	auto,  	
+  	level 1/.style={sibling distance=8em},
+  	level 2/.style={sibling distance=2em}]
+  	\node {$\Omega_I$}
+    	child {node {1}
+      		child {node {1}}
+      		child {node {2}}
+      		child {node {...}}
+      		child {node {n}}
+    	}
+    	child {node {2}
+    		child {node {1}}
+      		child {node {2}}
+      		child {node {...}}
+      		child {node {n}}
+       	}
+       	child {node {...}
+       		child {node {1}}
+      		child {node {2}}
+      		child {node {...}}
+      		child {node {n}}
+       	}
+       	child {node {n}
+       		child {node {1}}
+      		child {node {2}}
+      		child {node {...}}
+      		child {node {n}}
+       	};
+	\end{tikzpicture}
+\newpage
+	\begin{itemize}
+		\item Jeder der Pfade stellt einen möglichen Ausgang des Zufallsexperimentes der Variante I im 
+		Urnenmodell dar.
+		\item Für Varianten II - IV müssten bestimmte Pfade weggelassen bzw. miteinander identifiziert
+		werden (z.B. kein doppeltes Vorkommen).
+	\end{itemize}
+	\subsection{Lemma}
+	Für zwei eindliche Mengen $A,B$ gilt
+	$$|A\times B| = |A|*|B|$$
+	\subsection{Satz}
+	$$\binom{n}{k}=\binom{n}{n-k}$$
+	Beweis: 
+	\begin{itemize}
+		\item[1) ] $\binom{n}{k}=$ Anzahl der k-elementigen Teilmengen von $\{1,...,n\}$
+		\item[2) ] Mit jeder k-elementigen Teilmenge wird auch ihr Komplement $T^C$ festgelegt. Es handelt sich 
+		dann um eine $(n-k)$-elementige Teilmenge von $\{1,...,n\}$
+		$$\hookrightarrow |\{T\subset\{1,...,n\}:|T|=k\}|=
+		|\left\{T^C:T\subset\{1,...,n\}\: und \: |T^C|=k\right\}|$$		
+	\end{itemize}
+	1) \& 2) zusammen ergeben die Aussage $\blacksquare$
+	\subsection{Binomischer Lehrsatz}
+	Für $n\in\mathbb{N}$ und $a,b\in\mathbb{R}$ gilt:
+	$$(a+b)^n=\sum_{k=0}^n \binom{n}{k}a^k*b^{n-k}$$
+	Beweis:
+	$$(a+b)^n=(a+b)(a+b)*...(a+b)$$
+	Durch ausmultiplizieren erhalten wir eine Summe, bei der jeder Term ein Produkt von n Faktoren ist. Jeder
+	der Faktoren kann nur die Werte \say{a} oder \say{b} annehmen. \newline
+	$\hookrightarrow$ Die Terme sind von der Gestalt $a^k b^{n-k}$, wobei $k=0,...,n$
+	Für jedes feste $k$ gibt es genau $\binom{n}{k}$ Möglichkeiten $\blacksquare$
+\section{Diskrete Wahrscheinlichkeitsmodelle}
+	Als Verallgemeinerung des Laplace-Modells im folgendem Sinn:
+	\begin{itemize}
+		\item endliche oder abzählbar undendliche Ergebnismenge
+		\item die Elemtarereignisse (typischerweise) nicht mehr alle \newline 
+		gleichwahrscheinlich
+	\end{itemize}
+	\subsection{Definition Abzählbar \& Unendlich}
+	Eine Menge $\Omega$ heißt abzählbar unendlich, wenn sie mit $\mathbb{N}$ gleichmächtig ist.
+	\subsection{Definition Diskreter W-Raum}
+	Sei $\Omega$ eine höchstens abzählbare nichtleere Menge und
+	$$\rho :\Omega\rightarrow[0,1],\omega\rightarrow\rho (\omega)$$
+	eine Funktion mit
+	$$\sum_{\omega\in\Omega}\rho (\omega)=1$$
+	Dann heißt $\rho$ eine \textit{(Zähl)-Dichte}, W-Vektor oder Gewichtsfunktion auf $\Omega$.
+	Die Abbildung
+	$$P: \mathcal{P}(\Omega)\rightarrow[0,1], E\mapsto P(E):=\sum_{\omega\in E}\rho(\omega)$$
+	wird als W-Maß auf $\mathcal{P}(\Omega)$ genannt. $(\Omega,\mathcal{P}(\Omega),P)$ wird als 
+	\textit{diskreter W-Raum} bezeichnet.
+	
+	\subsection{Definition Ereignisraum}
+	Sei $\Omega$ eine höchstens abzählbare Ergebnismenge. Dann versteht man unter einem \textit{Ereignisraum}
+	das Paar $(\Omega,\mathcal{P}(\Omega))$.
+	\paragraph{Frage: }
+	Warum wird $P$ als W-Maß bezeichnet?
+	\begin{itemize}
+		\item Der Wert $P(E)$, den $P$ dem Ereignis $E\in\mathcal{P}(\Omega)$ zuordnet, wird als 							Wahrscheinlichkeit des Ereignisses $E$ interpretiert
+		\item Speziell für Elementarereignisse $\{\omega\}\in\mathcal{P}(\Omega)$ erhalten wir gemäß der
+		Definition von $P$ die Relation
+		$$P(\{\omega\})=\rho(\omega)$$
+	\end{itemize}
+	\subsection{Satz (Begründung für die Interpretation)}
+	\label{3dot4}
+	Ist $\rho :\Omega\rightarrow[0,1]$ eine Gewichtsfunktion, d.h. $$\sum_{\omega\in\Omega}\rho(\omega)=1,$$
+	dann erfüllen die Funktionswerte $P(E),E\in\mathcal{P}(\Omega)$ des zugehörigen W-Maßes 
+	$$P:\mathcal{P}(\Omega)\rightarrow[0,1],E\rightarrow P(E)=\sum_{\omega\in E}\rho(\omega)$$
+	die \textit{kolmogorovschen Axiome} A1 bis A3 (siehe Einleitung).
+	\paragraph{Beweis: }	 
+	\begin{itemize}
+		\item[zu A1) ] zu zeigen ist $0\leq P(E)\leq 1,\forall E\in\mathcal{P}(\Omega)$
+		$$P(E)=^{def}\sum_{\omega\in E}\rho(\omega)\geq\sum_{\omega\in E}0$$
+		$$\hookrightarrow \rho(\omega)\geq 0\: , \forall\omega\in\Omega$$
+		$$P(E)=^{def}\sum_{\omega\in E}\rho(\omega)\leq\sum_{\omega\in E\cup E^C}\rho(\omega)=\sum_{\omega
+		\in\Omega}=1$$
+		$$\hookrightarrow \: \text{da} \: \rho(\omega)\geq 0 \: , \forall\omega\in\Omega$$
+		\item[zu A2) ] $$\mathcal{P}(\Omega) = \sum_{\omega\in\Omega}\rho(\omega)=1$$
+		\item[zu A3) ] Seien $E_1,...,E_n$ paarweise disjunkte Ereignisse
+		$$P\left(\bigcup_{i=1}^n E_i\right)=\sum_{\omega\in\bigcup_{i=1}^n (E_i)}\rho(\omega)=
+		\sum_{i=1}^n P(E_i)$$
+	\end{itemize}
+	\subsection{Beispiel Urne}
+	Sei $U$ eine Urne mit $n$ Kugeln, d.h. $|U| = n$. Die Kugeln in $U$ besitzen ein weiteres 
+	Unterscheidungsmerkmal, hier die Farbe.
+	\begin{itemize}
+		\item Sei $S\subset U$ die Teilmenge der schwarzen Kugeln
+		\item Sei $W\subset U$ die Teilmenge der weißen Kugeln
+		\item Gelte $S\cup W=M$
+	\end{itemize}
+	Betrachte das \textit{Zufallsexperiment} $\mathcal{E}$: \newline
+	Es wird eine Kugel aus M entnommen und die Farbe notiert. \newline
+	$\hookrightarrow$ Ergebnismenge von $\mathcal{E}: \Omega=\{s,w\}$ 
+	\paragraph{$\rightarrow$ Frage: }	
+	Wie wahrscheinlich ist es, das ich eine schwarze Kugel ziehe? 
+	\paragraph{Antwort: }
+	$P(E)=\frac{|S|}{M}=\tilde{P}(S)$
+	\paragraph{Begründung: }
+	Dem Experiment $\mathcal{E}$ liegt ein Laplace-Experiment $\tilde{\mathcal{E}}$ 
+	\\zugrunde. \newline
+	$\tilde{\mathcal{E}}$: Es wird eine Kugel aus M gezogen mit dem zugehörigen W-Raum 
+	$$(\tilde{\Omega}=U,\mathcal{P}(U),\tilde{P}) \quad wobei \quad \tilde{P}(E) =\frac{|E|}{n}$$
+	Betrachten wir jetzt die Abbildung	
+	\[
+ 	f(\tilde{\omega})=\left\{\begin{array}{lr}
+ 		s &,\text{falls } \tilde{\omega}\in S\\
+ 		w &,\text{sonst } \widehat{=}\tilde{\omega}\in W
+ 	\end{array}\right.
+ 	\]
+	Dann erhalten wir die Ergebnismenge $\Omega$ von $\mathcal{E}$ als Bildmenge von $\tilde{\Omega}=U$
+	untert der Abbildung $f$, das heißt
+	$$\Omega =f(\tilde{\Omega})$$
+	und die Gewichtsfunktion:
+	$$\rho :\Omega\rightarrow [0,1]$$
+	ergibt sich aus
+	$$\rho(\omega)=P(\{\omega\})=\tilde{P}(f^{-1}(\{\omega\}))=\frac{|f^{-1}(\{\omega\})|}{n}$$
+	\subsection{Definition Mengen in Funktionen}
+	Seien $A,B$ nichtleere Mengen und
+	$$f: A \rightarrow B$$
+	eine Abbildung mit dem Definitionsbereich $A$ und Bildbereich $B$. Für jedes $M\subset A$ heißt die Menge
+	$$f(M)=\{f(a)\in B: \: a\in M\}\subset B$$
+	Die \textit{Urbildmenge} von $S\subset B$  und $f$ ist gegeben durch
+	$$f^{-1}(S):=\{a\in A: \: f(a)\in S)\}$$
+	\paragraph{Beispiel: }
+	$$f:\: \mathbb{R}\rightarrow\mathbb{R}\quad , x\longmapsto e^x,\quad f^{-1}([0,1])=\mathbb{R}$$ 
+	 \section{Zufallsvariablen}
+	 \subsection{Definition Zufallsvariable}
+	 \begin{itemize}
+	 	\item $(\Omega ,\mathcal{P}(\Omega^{'}),P)$ diskreter W-Raum
+	 	\item $\Omega$ höchstens abzählbar \newline
+	 	$\hookrightarrow X:\Omega^{'}\rightarrow\Omega$ heißen Zufallsvariablen mit Werten in $\Omega$ und 
+	 	Verteilung
+	 	$$P_X(E):=P(X^{-1}(E)),\:\forall E\subset\Omega$$
+	 	\item Mit dem Konzept einer Zufallsvariable werden in der Wahrscheinlichkeitstheorie 
+	 	Zufallsexperimente beschrieben.
+	 	\item Eine Zufallsvariable mit Werten in $\Omega$ beschreibt ein Zufallsexperiment, dessen 
+	 	Ergebnismenge gleich $\Omega$ oder einer Teilmenge von $\Omega$ ist. Genauer gibt $X(\Omega^{'})$
+	 	die Ergebnismenge des Zufallsexperimentes an.
+	 	\item Die Verteilung $P_X$ der Zufallsvariable $X$ ist formal ein W-Maß. Damit stellt das Tripel
+	 	$(\Omega ,\mathcal{P}\Omega , P_X)$ einen diskreten W-Raum dar.
+	 \end{itemize}
+	 \subsection{Theorem}
+	 Seien $(\Omega^{'},\mathcal{P}(\Omega^{'}),P)$ ein diskreter W-Raum und $X$ eine Abbildung auf 
+	 $\Omega^{'}$, dann ist durch
+	 $$P_X:\: P(\Omega)\rightarrow [0,1]$$
+	 $$E\longmapsto P(X^{-1}(E))$$
+	 wobei $\Omega=X(\Omega^{'})$ ein W-Maß auf $P(\Omega)$ definiert. 
+	\paragraph{Beweis: }
+	Wir konstruieren eine Gewichtsfunktion
+	$$\rho :\Omega\rightarrow [0,1]$$
+	so dass $\forall E\in\mathcal{P}(\Omega)$ gilt:
+	$$P_X(E)=\sum_{\omega\in E}\rho(\omega)$$
+	\paragraph{Unser Ansatz:}	
+	$$\forall\omega\in\Omega$$
+	$$\rho(\omega)=P(X^{-1}(\{\omega\})) \quad mit \quad X^{-1}(\{\omega\})\subset\Omega^{'}$$
+	Da $P$ nach Voraussetzung ein W-Maß ist, gilt dann $\rho(\omega)\in[0,1]$.\newline
+	Zum anderen erhalten wir
+	$$\sum_{\omega\in\Omega}\rho(\omega)=^{def}
+	\sum_{\omega\in\Omega}P\left(X^{-1}(\{\omega\}\right)
+	=\footnote{Siehe \ref{3dot4}}P\left(\bigcup_{\omega\in\Omega}X^{-1}(\{\omega\})\right)=P(\Omega^{'})
+	=1 \quad \blacksquare$$
+	\subsubsection{Beispiel Augensumme}
+	Zufallsexperiment $\mathcal{E}$: Es werden 2 Spielwürfel nacheinander geworfen und die Augensumme notiert.
+	\paragraph{$\hookrightarrow$ Frage: }
+	Was ist das geeignete W-Modell für $\mathcal{E}$? \newline
+	\textbf{alternativ:} Wie sieht die Zufallsvariable $X$: \say{Augensumme von zwei 6-seitigen Würfeln} 
+	formal aus?
+	\paragraph{Antwort: }
+	Die Ergebnismenge von $\mathcal{E}$ ist $\Omega=\{2,...,12\} \Rightarrow |\Omega|=11$
+	\paragraph{Beobachtung: }
+	Das Laplace-Modell scheint ungeeignet, da es mit dem Zufallsexperiment $\mathcal{E}$:
+	\say{Ein Spielwürfel wird 2 mal nacheinander geworfen und die Augenzahl notiert} nicht konsistent ist.
+	\newline
+	Wir formulieren eine geeignete Abbildung:
+	$$X:\Omega^{'}\rightarrow\Omega \quad \text{wobei} \quad \Omega^{'}=\{1,...,6\}^2\: ,\: |\Omega^{'}|=36$$
+	$$\hookrightarrow (a,b)\rightarrow a+b$$
+	$$\Rightarrow\:\rho(\omega)=P(\{\omega\}):=P^{'}(X^{-1}(\{\omega\}))=\frac{|X^{-1}(\{\omega\})|}{36}$$
+	$$=\frac{|\{(a,b):\: a,b\in\{1,...6\}\: , \: a+b=\omega\}}{36}$$
+	$$\hookrightarrow\rho(\omega)=\frac{1}{36}*(6-|\omega -7|)\: , \:\omega\in\{1,...,12\}=\Omega$$
+	Die Verteilung $P_X$ ist dann das W-Maß zur Gewichtsfunktion $\rho$, die in der vorherigen Gleichung 
+	festgelegt ist. Es gibt mehrere wichtige Verteilungen.
+	\subsection{Definition Bernoulli-Verteilung}
+	Sei $p\in[0,1]$. Die Verteilung auf $\mathcal{P}(\Omega)$, wobei $\Omega=\{0,1\}$, zur Gewichtsfunktion
+	$\rho(1)=p$ und $\rho(0)=1-p$ heißt \textit{Bernoulli-Verteilung zum Parameter p} und wird mit 
+	\textit{$B_p$} bezeichnet.
+	\subsection{Definition Bernoulli-Experiment}
+	Ein Zufallsexperiment heißt \textit{Bernoulli-Experiment}, wenn es durch eine Bernoulli -verteilte 
+	Zufallsvariable beschrieben wird.\\
+	Bernoulli-Experimente haben folgende Eigenschaften:
+	\begin{itemize}
+		\item Ergebnismenge $=\{0,1\}$
+		\item Modellieren zum Beispiel das Werfen einer Münze, wobei \say{Zahl} und \say{Kopf} durch die Werte
+		\say{0} bzw. \say{1} kodiert werden
+		\item Allgemein interpretiert man 
+		\begin{equation*}
+		\begin{split}
+		1 \quad & \widehat{=} \quad \text{Treffer/Erfolg}\\
+		0 \quad & \widehat{=} \quad \text{kein Treffer/Misserfolg}
+		\end{split}
+		\end{equation*}
+		\item[$\hookrightarrow$] $B_p$ ist die Bernoulli-Verteilung mit Erfolgswahrscheinlichkeit $p$
+		\item Häufig steht \say{1} sinngemäßt für \say{Ja} und \say{0} für \say{Nein}, wenn die betreffende 
+		Zufallsvariable das Eintreten bzw. Nicht-Eintreten eines Ereignisses beschreibt.
+	\end{itemize}
+	\subsection{Definition Indikatorfunktion}
+	Seinen $\Omega$ eine Menge und $M\subseteq\Omega$. Die auf $\Omega$ definierte Funktion	
+	\[
+ 	\textcal{1}_M (\omega):=\left\{\begin{array}{lr}
+ 		1 &,\omega\in M\\
+ 		0 &,\text{sonst} 
+ 	\end{array}\right.
+ 	\]
+	heißt \textit{Indikatorfunktion} von M auf $\Omega$.
+	\subsubsection{Beispiel}
+	\paragraph{Beispiel 1}	
+	Ein 6-seitiger Würfel wird geworfen und die Augenzahl \say{6} als Treffer gewertet.
+	\begin{itemize}
+		\item[$\hookrightarrow$] Zufallsvariable: Es wird ein Treffer erzielt ist Bernoulli-verteilt zum Parameter
+		$p=\frac{1}{6}$ \newline
+		$\hookrightarrow$ formal: 
+		\begin{equation*}
+		\begin{split}
+		X:\{1,...,6\} & \rightarrow\{0,1\}\\
+		\omega & \rightarrow\textcal{1}_{\{6\}}(\omega)
+		\end{split}
+		\end{equation*}		
+	\end{itemize}
+	\paragraph{Beispiel 2}
+	Ein 6-seitiger Würfel wird dreimal nacheinander geworfen und jeweils die Augenzahl notiert. Ab einer 
+	Augensumme =15 wird ein Gewinn ausgezahlt. 
+	\begin{itemize}
+		\item[$\hookrightarrow$] Zufallsvariable $Z$: Gewinnauszahlung \newline
+		$\hookrightarrow$ formall: 
+		$$Z=\textcal{1}_{\{X\geq 15\}}\circ X\footnote{Zufallsvariable: Augensumme nach 3 Würfen}$$
+		somit $ Z:\{1,...,6\}^3\rightarrow\{0,1\}$		
+	\end{itemize}
+	\subsubsection{Definition}
+	Seien $f:A\rightarrow B$ und $g:B\rightarrow C$ zwei Abbildungen. Dann ist die Verkettung $g\circ f$ definiert
+	als die Abbildung
+	$$g\circ f: \quad A\rightarrow C, \:\: a\rightarrow g\circ f(a):=g\left(f(a)\right)$$
+	
+	\subsection{Definition Gleichverteilte Zufallsvariablen}
+	Sei $\Omega$ eine endliche Menge. Das W-Maß auf $\Omega$ mit der (konstanten) Zähldichte
+	$$\rho (\omega)=\frac{1}{|\Omega |}\: , \:\: \omega\in\Omega$$
+	heißt \textit{Gleichverteilung auf $\Omega$} und wird mit $\mathcal{U}_{\Omega}$ bezeichnet.
+	
+	\subsection{Definition Binomialverteilung}
+	Seien $n\in \mathbb{N}$ und $p\in (0,1)$. Das W-Maß auf $\{0,1,...,n\}$ mit der Zähldichte
+	$$\rho(k):=\binom{n}{k} p^k (1-p)^{n-k}\: ,\:\:\forall\: k=0,1,...,n$$
+ 	heißt \textit{Binomialverteilung zu den Parametern $n$ und $p$}. (Notation = $B_{n,p}$)
+ 	
+ 	\paragraph{Beispiel:}
+ 	Beim $n$-maligen Werfen eines 6-seitigen Würfels wird jedes Mal, wenn die Augenzahl \say{6} fällt, ein Treffer
+ 	gezählt. \newline
+ 	$\hookrightarrow$ Zu X: Anzahl der Treffer bei $n$ Versuchen \newline
+ 	X ist \textit{binomialverteilt}.
+ 	
+ 	\paragraph{Herleitung:}
+ 	Das Zugrunde liegende Zufallsexperiment ist \newline
+ 	$\mathcal{E^{'}}$: ein fairer 6-seitiger Würfel wird $n$-mal geworfen und jeweils die Augenzahl notiert.
+ 	$\mathcal{E^{'}}$ stellt ein Laplace-Experiment der Ordnung $N=6^n$ dar. Bezeichne $\Omega^{'}$ die 
+ 	Ergebnismenge, d.h. $\Omega^{'}=\{1,...,6\}^n$, dann ist $(\Omega^{'},\mathcal{P}(\Omega^{'}),
+ 	\mathcal{U}_{\Omega^{'}})$ der zugehörige Laplace-Raum.
+ 	$$X:\Omega^{'}\rightarrow\{0,1,...,n\}$$
+ 	$$\omega=\{\omega_1 ,...,\omega_n )\longmapsto\sum^n_{i=1}\textcal{1}_{\{6\}}(\omega_i)$$
+ 	Diese Abbildung stellt die betreffende Zufallsvariable $X$ dar!
+ 	\begin{equation*}
+ 	\begin{split}
+ 	\hookrightarrow P_X(\{k\}) & =\mathcal{U}_{\Omega^{'}}\left(X^{-1}(\{k\})\right)\\
+ 	& = \frac{|X^{-1}(\{k\})|}{6^n}\\
+ 	& = \frac{\binom{n}{k}*5^{n-k}}{6^{n-k+k}}=\binom{n}{k}\left(\frac{1}{6}\right)*\left(\frac{5}{6}\right)^{n-k}
+ 	\end{split}
+ 	\end{equation*}
+ 	
+ 	\subsection{Definition}
+ 	Seien $P$ ein W-Maß und $X$ eine Zufallsvariable. Wir schreiben $X~P$, wenn die Verteilung $P_X$ von $X$ 
+ 	gleich $P$ ist.
+ 	
+ 	\subsubsection{Hypergeometrisch verteilte Zufallsvariablen}
+ 	\paragraph{Beispiel}
+ 	In einer Urne befinden sich $N$ Kugeln, davon sind $k$ rot und die anderen $N-k$ Kugeln sind weiß. Es werden
+ 	$m$ Kugeln blind gezogen. \newline
+	$\hookrightarrow$ Frage: Wie ist folgende Zufallsvariable $X$ verteilt? \newline
+	$X$: Anzahl der roten Kugeln in der Stichprobe(vom Umfang $m$) \newline
+	Wir stellen $X$ als eine Abbildung auf dem Laplace-Raum $(\Omega^{'},\mathcal{P}(\Omega^{'}),P)$ dar, der
+	zum Laplace-Experiment $\mathcal{E}^{'}$ gehört. 
+	\begin{itemize}
+		\item[$\hookrightarrow$] $\mathcal{E}^{'}$: Es werden $m$ Kugeln blind und gleichzeitig aus der Urne 
+		gezogen
+		\item[$\hookrightarrow$] Ergebnismenge $\Omega^{'}$ zu $\mathcal{E}^{'}$:
+		\begin{equation*}
+		\begin{split}
+		\Omega^{'} \: & =\: \{X\subseteq \{1,...,N\}\: : \: |X|=m \}\\
+		& =\: \{(\omega_1 ,...,\omega_m ):\forall i=1,...,m \: :\omega_i \in\{1,...,N\},\:\: \\ 
+		& \:\quad \text{ und }\omega_1 <\omega_2 <...<\omega_m\}
+		\end{split}
+		\end{equation*}
+		\item[$\hookrightarrow$] $|\Omega^{'}|=\binom{N}{m}$
+	\end{itemize}
+	Bezeichne jetzt $K$ die Teilmenge der roten Kugeln. Die Zufallsvariable $X$ wird als Abbildung auf 
+	$(\Omega^{'},\mathcal{P}(\Omega^{'}),\mathcal{U}_{\Omega^{'}})$ dargestellt.
+	$$X:\omega\in\Omega^{'}\longmapsto\sum_{i=1}^{m}\textcal{1}_K (\omega_i)$$ 	
+ 	$\hookrightarrow$ Verteilung $P_X$ von $X$ ergibt sich wie folgt:
+ 	\begin{equation*}
+ 	\begin{split}
+ 	P_X(\{l\})\: & =\: \mathcal{U}_{\Omega^{'}}\left(X^{-1}(\{l\})\right),\:\forall l=0,...,min\{m,|k|\}\\
+ 	& =\: \frac{\binom{k}{l}*\binom{N-K}{m-l}}{\binom{N}{m}}
+ 	\end{split}
+ 	\end{equation*}
+ 	In folgenden Fällen ist $X^{-1}\left(\{l\}\right)=\emptyset$:
+ 	\begin{itemize}
+ 		\item $l>k$
+ 		\item $N-k<m-l$
+ 	\end{itemize}
+ 	$$\hookrightarrow X\left(\Omega^{'}\right)=
+ 	\left\{l*max\{0,mi\left(N-k\right)\}\leq l \leq min\{m,k\}\right\}$$
+ 	\paragraph{Bemerkung:} Seien $n\in\mathbb{N}$ und $k\in\mathbb{Z}$. Dann gilt
+ 	\[
+    \binom{n}{k} = \left\{\begin{array}{lr}
+        0 & ,k<0\\
+        0 & ,k>n\\
+        \frac{n\left(n-1\right)...\left(n-k+1\right)}{k!} & ,\text{sonst }
+        \end{array}\right.
+  	\]
+  	\subsection{Definition Zähldichte}
+ 	Seien $\mathcal{N},m,k\in\mathbb{N}$ mit $K<\mathbb{N}$ und $m\leq\mathbb{N}$. Das W-Maß mit der \textit{Zähldichte}
+ 	$$\rho : \left\{0,1,....m\right\}\rightarrow[0,1], \:\: l\rightarrow
+ 	\frac{\binom{k}{l}\binom{n-k}{m-l}}{\binom{N}{m}}$$
+ 	Beispiele für Zufallsvariablen, die abzählbar unendlich viele Werte annehmen.
+ 	\begin{itemize}
+ 		\item \textit{Geometrische Verteilung}
+ 	\end{itemize}
+ 	\subsection{Definition Geometrische Verteilung}
+ 	Sei $p\in (0,1)$. Das W-Maß mit der Zähldichte 
+ 	$$k\in\mathbb{N}_0\rightarrow\rho(k):=(1-p)^k *p$$
+ 	heißt \textit{geometrische Verteilung} zum Parameter $p$ und wird mit $G_p$ bezeichnet.
+ 	\paragraph{Bemerkung:}
+ 	$$\sum^{\infty}_{k=0}\rho(k)=\sum^{\infty}_{k=0}(1-p)^k p\quad
+ 	\footnote{geometrische Reihe}$$
+ 	\paragraph{Beispiel:}
+ 	Eine Münze wird so lange geworden bis $\textit{Z}$ fällt. \\
+ 	$\hookrightarrow$ Zufallsvariable: $X$ Anzahl der Versuche, bis $\textit{Z}$ fällt ist geometrisch verteilt zum Parameter $p=0,5$.
+ 	\paragraph{Diskussion:}
+ 	Da es beliebig viele Versuche sein können bis $\textit{Z} (=1)$ fällt, scheint folgende Menge geeignet, in $X$ auf $\Omega$ zu modellieren.
+ 	$$\Omega=\left\{(x_1,x_2,x_3,...):x_i\in\{0,1\}:\forall i\in\mathbb{N}\right\}$$
+ 	Modifizierte Version: Wir brechen nach $n$ Versuchen ab, unabhängig davon ob ein Treffer erzielt wurde oder nicht.
+ 	$$\tilde{\Omega}=\left\{(x_1,...,x_n\}:x_i\in\{0,1\}\forall i=1,...,n\right\}$$
+ 	$X$ ist Anzahl der Versuche bis eine \textit{1} fällt. Dies wird dargestellt als Abbildung auf den Laplace-Raum $(\tilde{\Omega},\mathcal{P}(\tilde{\Omega}),P)$
+ 	\paragraph{Konkret:}
+ 	\[
+ 	X:(x_1,...,x_n)\in\tilde{\Omega}\rightarrow \left\{\begin{array}{lr}
+ 		k\in\{0,...,n-1\} &,\text{so dass } x=1 \text{ und } x_j=0\\
+ 		n &,\text{sonst} 	
+ 	\end{array}\right.
+ 	\]
+ 	$$\hookrightarrow\rho(k)=P_X\left(\{k\}\right)=\frac{|X^{-1}\left(\{k\}\right)|}{2^n}=
+ 	\frac{2^{n-k-1}}{2^n}=\left(\frac{1}{2}\right)^k *\frac{1}{2} \:\: \forall k=0,...,n-1$$
+ 	Das nennt man auch \textit{Poisson-Verteilung}
+ 	\subsection{Definition Poisson-Verteilung}
+ 	Sei $d>0$. Das W-Maß mit der Zähldichte 
+ 	$$\rho:\mathbb{N}_0\rightarrow[0,1],k \mapsto e^{-\lambda} \frac{\lambda^{k}}{k!}$$
+ 	heißt \textit{Poisson-Verteilung} zum Parameter $d$ und wird mit $P_{\lambda}$ bezeichnet.
+ 	\paragraph{Bemerkung:}
+ 	\begin{itemize}
+ 		\item $\lambda$ wird als mittlere Rate interpretiert, mit der ein Ereignis in einem vorgegebenen Zeitfenster $J$ beobachtet wird
+ 		\item $\mathcal{P}_{\lambda}$ ist die Verteilung der Zufallsvariablen \say{Anzahl der Ergebnisse in $J$} 		
+ 	\end{itemize}
+ 	\paragraph{Beispiele:}
+ 	\begin{itemize}
+ 		\item Anzahl der ankommenden E-Mails/Tag
+ 		\item Anzahl der Versicherungsfälle  pro Jahr
+ 		\item Anzahl der Kunden pro Stunde
+ 	\end{itemize}
+ 	\paragraph{Bemerkungen:}
+ 	$$\rho(k)=e^{-\lambda}\frac{\lambda^k}{k!}, k=0,1,...$$
+ 	$$\hookrightarrow \text{Dichte   } e^{\lambda}=\sum^{\infty}_{k=0}\frac{\lambda^{\lambda}}{k!}$$
+	
+	\section{Erwartungswerte und Varianz}
+	\subsection{Definition Reelwertigen Zufallsvariable}
+	Eine Zufallsvariable, die Werte in $\mathbb{R}$ annimmt heißt \textit{reele Zufallsvariable}. Alle bisherigen Zufallsvariablen sind Beispiele reeller Zufallsvariablen. Genauer handelt es sich bei den Zufallsvariablen um \textit{diskret verteilte} Zufallsvariablen. Das für diese ist, dass die Werte in einer höchstens abzählbaren Menge $\Omega\subset\mathbb{R}$ annehmen:
+	
+	\begin{itemize}
+	\item $\Omega=\{0,1\} \text{ bei } X\sim \mathcal{B}_p \quad (p\in[0,1])$
+	\item $\Omega=\{0,1,...,n\} \text{ bei } X\sim \mathcal{B}_{n,p}$
+	\item $\Omega=\{0,1,...,m\} \text{ bei } X\sim\mathcal{H}_{m,k,N-k}$
+	\item $\Omega=\mathbb{N} \text{ bei } X\sim \mathcal{P}_{\lambda} \text{ sowie } X\sim \mathcal{G}_p$ 
+	\end{itemize}		
+ 	
+ 	Jede auf einem diskreten W-Raum $(\Omega',\mathcal{P}(\Omega'),P)$ definierte Zufallsvariable $X$ gehört zu den diskreten Zufallsvariablen, denn  	$X(\Omega')$ ist eine höchstens abzählbare Menge.
+ 	
+ 	\subsection{Definition Erwartungswert}
+ 	Sei $X$ eine reele Zufallsvariable, die Werte in einer endlichen Menge $\Omega\subset\mathbb{R}$ annimmt, dann heißt der Wert 
+ 	$$\mathbb{E}(X):=\sum_{x\in\Omega}xP(X=x)=\sum_{x\in\Omega}xP_X(\{x\})$$
+ 	\textit{Erwartungswert von $X$}. 
+ 	
+ 	\paragraph{}
+ 	Sei X eine Zufallsvariable, die abzählbar unendlich viele Werte $x_i,i\in\mathbb{N}$ annehmen kann, jeweils mit der Wahrscheinlichkeit $p$, so heißt
+ 	$$\mathbb{E}(X):=\sum^{\infty}_{i=1}x_i p_i$$
+ 	\textit{Erwartungswert} (EW) von X, wenn die eben aufgeführte Reihe absolut konvergent ist.
+ 	$$\hookrightarrow \sum^{\infty}_{i=1}x_i \text{ absolut konvergent } \Leftrightarrow \sum^{\infty}_{i=1}|x_i |<\infty$$
+ 	
+ 	Der Erwartungswert ist eine reelle Zahl.
+ 	\paragraph{Interpretation:}
+ 	\begin{itemize}
+ 	\item Diese Zahl gibt den Wert an, den die betreffende Zufallsvariable im Mittel annimmt. Dabei gewichten wir die einzelnen Werte $x$, die $X$ annehmen kann, entsprechend der Wahrscheinlichkeit $p_x$ des Eintretens des Elementarereignisses $X=x$.
+	\item Wenn wir das Experiment $X$ unter identischen Bedingungen und ohne gegenseitige Beeinflussung oft wiederholen, erwarten wir, das dass arithmetische Mittel der einzelnen Ergebnisse für ein geeignetes W-Modell nah bei $\mathbb{E}(X)$ liegt
+	\end{itemize}
+ 	
+ 	\paragraph{Beispiele}
+ 	\begin{itemize}
+ 	\item[a)] Erwartungswert von $X\sim\mathcal{B}_p$ \\ 
+$\mathbb{E}(X)=0(1-p)+1*p=p$
+ 	\item[b)] $\Omega=\{x_1,...,x_n\}\subset\mathbb{R} \text{ und } X\sim\mathcal{U_{\Omega}}:$ \\
+$\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ entspricht Mittel der Zahlen $x_1,...,x_n$
+	\item[c) ] Erwartungswert von $X\sim\mathcal{B}_{n,p}$
+	\begin{equation*}
+	\begin{split}
+	\mathbb{E}(X)=\sum^n_{k=0} k\mathcal{B}_{n,p}(\{k\}) & = \sum^n_{k=0}k\binom{n}{k}p^k (1-p)^{n-k} \\
+	& = \sum^n_{k=1}k\frac{n!}{(n-k)!k!}p\,p^{k-1}(1-p)^{n-k}\\
+	& = \sum^n_{k=1}np\binom{n-1}{k-n}p^{k-1}(1-p)^{n-k}\\
+	& = np\sum^{n-1}_{l=o}\binom{n-1}{l}p^l (1-p)^{n-1-l}=np
+	\end{split}
+	\end{equation*}	
+	\item[d) ] Erwartungswert von $X\sim\mathcal{P}_{\lambda}$:
+	\begin{equation*}
+	\begin{split}
+	\mathbb{E}(X) & = \sum^{\infty}_{k=0}k\,\mathcal{P}_{\lambda}(\{k\})\\
+	 & = \sum^{\infty}_{k=1}ke^{-\lambda}\frac{\lambda^k}{k!}\\
+	 & = e^{-\lambda}\sum^{\infty}_{k=1}\frac{\lambda^{k-1}}{(k-1)!}\\
+	 & =\lambda
+	\end{split}
+	\end{equation*}
+ 	\end{itemize}
+ 	
+ 	\paragraph{Zusammenhang zwischen Poisson-und  Binomialverteilung}
+ 	\paragraph{Beispiel:}
+ 	\begin{itemize}
+ 	\item Sei $\lambda>0$ die mittlere Anzahl von Kunden, die ein Blumengeschäft im Zeitintervall $I$ (z.B. $I=$ 10 Stunden) betreffen.
+ 	\item Wir zerlegen das Zeitintervall $I$ in $n$ gleich große Teilintervalle
+ 	\item Mit wachsendem $n$ wird bei festen $I$ die Länge der Teilintervalle\footnote{$=\frac{I}{n}$} immer kürzer
+ 	\item[$\hookrightarrow$] Ansatz für die Wahrscheinlichkeit $p_n$, dass ein Teilintervall der Länge $\frac{I}{n}$ ein Kunde den Laden betritt
+ 	$$p_n=\frac{\lambda}{n}$$
+ 	\end{itemize}
+ 	
+ 	\paragraph{Annahme:}
+ 	Ob ein Kunde im gegebenen Teilintervall den Laden betritt ist unabhängig davon, ob im anderen Teilintervall das Ereignis eintritt.\\
+ 	$\hookrightarrow$ Die Wahrscheinlichkeit dafür, dass im Intervall $I$ der Blumenladen von $k$ Kunden besucht wird, wird entsprechend durch die Binomialverteilung bestimmt:
+ 	$$\mathcal{B}_{n,\, p_n=\frac{\lambda}{n}}(\{k\})=\binom{n}{k}\left(\frac{\lambda}{n}\right)^k\left(1-\frac{\lambda}{n}\right)^{n-k}$$
+ 	Dann lässt sich zeigen:
+ 	$$\lim_{n\to\infty}\mathcal{B}_{n,\frac{\lambda}{n}}(\{k\})=\mathcal{P}_{\lambda}(\{k\})$$
+ 	
+ 	\subsection{Theorem}
+ 	Seien $\lambda>0$ und $p_n\in(0,1),\, n\in\mathbb{N}$ eine Folge, so dass $\lim_{n\to\infty}n\, p_n=\lambda$. Dann gilt für jedes $k\in\mathbb{N}$:
+ 	$$\lim_{n\to\infty}\mathcal{B}_{n,p_n}(\{k\})=\mathcal{P}_{\lambda}(\{k\})$$
+ 	\paragraph{Definition}
+ 	Seien $f:\mathbb{N}\to\mathbb{R}$ und $g:\mathbb{N}\to\mathbb{R}$ zwei Folgen 
+ 	$$f(k)\sim g(k) \text{ für } k\to\infty \Leftrightarrow \frac{f(k)}{g(k)}=1 \text{ für } k\to\infty$$
+ 	
+ 	\subsection{Lemma}
+ 	Sei $k\in\mathbb{N}$, dann gilt im Grenzwert $n\to\infty$
+ 	$$\binom{n}{k}\sim \frac{n^k}{k!}$$
+ 	
+ 	\paragraph{Beweis zu Lemma 5.4}
+ 	\begin{equation*}
+ 	\begin{split}
+ 	\binom{n}{k} = \frac{n!}{(n-k)!k!} & = \frac{n(n-1)...(n-k+1)}{k!}\\
+ 	& = \frac{n^k}{k!}\frac{(n-1)(n-2)...(n-k+1)}{n^{k-1}}\\
+ 	& = \frac{n^k}{k!}\frac{n\left(1-\frac{1}{n}\right)}{n} \frac{n\left(1-\frac{2}{n}\right)}{n} ... \frac{n\left(1-\frac{k+1}{n}\right)}{n}\\
+ 	& \sim \frac{n^k}{k!}
+ 	\end{split}
+ 	\end{equation*}
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+
+
+
+
+
+\end{document}

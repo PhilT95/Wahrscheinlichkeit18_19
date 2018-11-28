@@ -1,0 +1,42 @@
+# timestamp | duration | file | instruction | dir | modtime | etag | size | fileId | status | errorString | http result code | other size | other modtime | X-Request-ID
+#=#=#=# Syncrun started 2018-11-25T16:37:42Z
+#=#=#=#=# Propagation starts 2018-11-25T16:37:42Z (last step: 268 msec, total: 268 msec)
+#=#=#=# Syncrun finished 2018-11-25T16:37:43Z (last step: 488 msec, total: 756 msec)
+#=#=#=# Syncrun started 2018-11-26T10:55:52Z
+#=#=#=#=# Propagation starts 2018-11-26T10:55:52Z (last step: 390 msec, total: 390 msec)
+11:55:52||WT_Script.aux|INST_REMOVE|Up|1543165638|55f88372e7cfac3516c7feb764fe5642|6427|00003967oc18c57gyp71|4||204|0|0|c1d71a84-6ab7-4223-8e91-522634549d15|
+#=#=#=# Syncrun finished 2018-11-26T10:55:54Z (last step: 1408 msec, total: 1798 msec)
+#=#=#=# Syncrun started 2018-11-26T10:56:44Z
+#=#=#=#=# Propagation starts 2018-11-26T10:56:46Z (last step: 1599 msec, total: 1599 msec)
+#=#=#=# Syncrun finished 2018-11-26T10:56:46Z (last step: 40 msec, total: 1640 msec)
+#=#=#=# Syncrun started 2018-11-26T11:07:39Z
+#=#=#=#=# Propagation starts 2018-11-26T11:07:39Z (last step: 331 msec, total: 331 msec)
+#=#=#=# Syncrun finished 2018-11-26T11:07:39Z (last step: 44 msec, total: 375 msec)
+#=#=#=# Syncrun started 2018-11-26T11:31:54Z
+#=#=#=#=# Propagation starts 2018-11-26T11:31:55Z (last step: 283 msec, total: 283 msec)
+#=#=#=# Syncrun finished 2018-11-26T11:31:55Z (last step: 40 msec, total: 324 msec)
+#=#=#=# Syncrun started 2018-11-26T15:30:16Z
+#=#=#=#=# Propagation starts 2018-11-26T15:30:17Z (last step: 455 msec, total: 455 msec)
+16:30:18||WT_Script.aux|INST_NEW|Up|1543246120|abbc6c04083cdafddb5d8678f861578c|7585|00004104oc18c57gyp71|4||201|0|0|7cf3ff12-95bf-4d95-a27f-edf754fb76b3|
+16:30:18||WT_Script.out|INST_SYNC|Up|1543246120|d8a1eed35bb53bee826580e3f7566f58|2805|00003969oc18c57gyp71|4||204|2460|1543165638|9d021f26-0699-46e2-9ee8-1ec3b3230f6d|
+16:30:18||WT_Script.log|INST_SYNC|Up|1543246120|da4f7f5771bc956220ee02ef5d2dd43a|73699|00003968oc18c57gyp71|4||204|54916|1543165638|ee312964-de65-4e88-ab60-102604506473|
+16:30:18||WT_Script.synctex.gz|INST_SYNC|Up|1543246120|65f01ff49d4523d1ea0c2466cc93ffe8|144232|00003970oc18c57gyp71|4||204|120312|1543165638|37dc2baa-5652-41bb-a2eb-a42b35e272ec|
+16:30:18||WT_Script.tex|INST_SYNC|Up|1543246122|9505d5acc9697d5487cd04ab63dc7713|39030|00003971oc18c57gyp71|4||204|33376|1543165639|c05f0686-7216-41b3-90e9-2bd058a5fdff|
+16:30:18||WT_Script.pdf|INST_SYNC|Up|1543246120|acfe434f7a438305e1d44aa5b067ddb7|423445|00003182oc18c57gyp71|4||204|386117|1543165638|886773d3-8f9f-444f-99c7-b58a7afa9c04|
+16:30:19||WT_Script.toc|INST_SYNC|Up|1543246120|5479055ff0e0fe30fc9224e1a746bf3c|5497|00003972oc18c57gyp71|4||204|4573|1543165638|50036047-b231-4bba-bda7-9a34d93cbda5|
+#=#=#=# Syncrun finished 2018-11-26T15:30:19Z (last step: 2764 msec, total: 3219 msec)
+#=#=#=# Syncrun started 2018-11-26T15:31:08Z
+#=#=#=#=# Propagation starts 2018-11-26T15:31:08Z (last step: 260 msec, total: 260 msec)
+#=#=#=# Syncrun finished 2018-11-26T15:31:08Z (last step: 196 msec, total: 457 msec)
+#=#=#=# Syncrun started 2018-11-26T17:04:03Z
+#=#=#=#=# Propagation starts 2018-11-26T17:04:04Z (last step: 211 msec, total: 211 msec)
+#=#=#=# Syncrun finished 2018-11-26T17:04:04Z (last step: 38 msec, total: 249 msec)
+#=#=#=# Syncrun started 2018-11-28T08:01:42Z
+#=#=#=#=# Propagation starts 2018-11-28T08:01:42Z (last step: 261 msec, total: 261 msec)
+#=#=#=# Syncrun finished 2018-11-28T08:01:42Z (last step: 40 msec, total: 301 msec)
+#=#=#=# Syncrun started 2018-11-28T11:01:44Z
+#=#=#=#=# Propagation starts 2018-11-28T11:01:45Z (last step: 365 msec, total: 365 msec)
+#=#=#=# Syncrun finished 2018-11-28T11:01:45Z (last step: 362 msec, total: 728 msec)
+#=#=#=# Syncrun started 2018-11-28T14:08:03Z
+#=#=#=#=# Propagation starts 2018-11-28T14:08:03Z (last step: 349 msec, total: 349 msec)
+#=#=#=# Syncrun finished 2018-11-28T14:08:03Z (last step: 35 msec, total: 385 msec)
