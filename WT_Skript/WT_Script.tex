@@ -816,7 +816,7 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
  	\subsection{Theorem}
  	Seien $\lambda>0$ und $p_n\in(0,1),\, n\in\mathbb{N}$ eine Folge, so dass $\lim_{n\to\infty}n\, p_n=\lambda$. Dann gilt für jedes $k\in\mathbb{N}$:
  	$$\lim_{n\to\infty}\mathcal{B}_{n,p_n}(\{k\})=\mathcal{P}_{\lambda}(\{k\})$$
- 	\paragraph{Definition}
+ 	\subsection{Definition}
  	Seien $f:\mathbb{N}\to\mathbb{R}$ und $g:\mathbb{N}\to\mathbb{R}$ zwei Folgen 
  	$$f(k)\sim g(k) \text{ für } k\to\infty \Leftrightarrow \frac{f(k)}{g(k)}=1 \text{ für } k\to\infty$$
  	
@@ -834,8 +834,89 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
  	\end{split}
  	\end{equation*}
  	
+ 	\subsection{Theorem}
+ 	Sei $\Omega',\mathcal{P}(\Omega'),P)$ eine diskreter W-Raum und $X,Y$ zwei Zufallsvariablen mit $\mathbb{E}(X)$ und $\mathbb{E}(Y)$ definiert. Dann gilt:
+ 	\begin{itemize}
+ 	\item[a)] $\mathbb{E}(cX) = c\mathbb{E}(X) \quad \forall c\in\mathbb{R}$
+ 	\item[b)] $\mathbb{E}(X+Y) = \mathbb{E}(X) + \mathbb{E}(Y)$
+ 	\item[c)] $X\leq Y \Rightarrow\mathbb{E}(X)\leq\mathbb{E}(Y)$
+ 	\end{itemize}
+ 	\paragraph{Beweis:}
+ 	a)
+ 	$$\mathbb{E}(cX)\stackrel{1}{=}\sum_{z\in\Omega}zP_{cX}(\{z\})\,
+ 	=\sum_{z\in c\Omega}zP_X\left(\left\{\frac{z}{c}\right\}\right)
+ 	=\sum_{x\in\Omega}cxP_X(\{x\})=c\mathbb{E}(X)$$
+ 	\begin{enumerate}
+ 	\item cX ist eine Zufallsvariable mit Werten in $c\Omega\,=:\{cx\in\mathbb{R}:\,x\in\Omega\}$ eine Verteilung $P_cX$
+ 	\item 
+ 	\begin{equation*}
+ 	\begin{split}
+ 	cX:\, & \Omega\mapsto c\Omega \quad \text{ ist eine Zufallsvariable über }\\ 
+ 	& x\mapsto cX \quad (\Omega,\mathcal{P}(\Omega),P_X) \text{ , wobei}
+ 	\end{split}
+ 	\end{equation*}
+	$$P_X=P\circ X^{-1}$$
+	$$\hookrightarrow P_{cX}=P_X\circ (cX)^{-1} \Rightarrow P_cX(\{z\})=P_X(cX=z)
+	=P_X\left(\left\{\frac{z}{c}\right\}\right)$$	 	
+ 	\end{enumerate}
  	
+ 	\subsection{Definition Varianz}
+ 	\subsubsection{Endliche Zufallsvariable}
+ 	Sei $X$ eine endlich Zufallsvariable, mit Werten $x\in\Omega$, mit Wahrscheinlichkeit $p_x$. Dann heißt:
+ 	$$\sum_{x\in\Omega}\left(x-\mathbb{E}\left(X\right)\right)^2\,p_x=:\text{Var}(X)$$
+ 	die \textit{Varianz}\footnote{Auch \textit{Streuung} genannt.} von $X$. 
+ 	\subsubsection{Abzählbare Zufallsvariable}
+ 	Sei $X$ eine abzählbar, unendliche Zufallsvariable, mit den Werten $x\in\Omega,\,i\in\mathbb{N}$, mit einem abzählbaren $\Omega$  mit Wahrscheinlichkeit $p_i$ und der Erwartungswert $\mathbb{E}(X)$ ist konvergent. Dann heißt:
+ 	$$\sum_{i=1}^{\infty}\left(x_i -\mathbb{E}\left(X\right)\right)^2 p_i =:\text{Var}(X)$$
+ 	die Varianz von $X$.
+ 	\paragraph{Bemerkung:}
+ 	\begin{equation*}
+ 	\begin{split}
+ 	\text{Var}(X) & \geq 0\\
+ 	\text{Var}(X) & = \infty \text{ sind möglich}
+ 	\end{split}
+ 	\end{equation*}
+ 	$$\forall X\exists v\in\mathbb{R}\cup\{+\infty\}\quad \text{Var}(X)=v$$
+ 	\subsection{Definition Standardabweichung}
+ 	Sei $X$ eine Zufallsvariable mit $\text{Var}(X)\in\mathbb{R}$, dann wird
+ 	$$\sigma(X)=\sqrt{\text{Var}(X)}$$
+ 	\textit{Standardabweichung} genannt.
+ 	\paragraph{Interpretation:}
+ 	Die Varianz gibt den Mittelwert der Abweichung zum Quadrat der Zufallsvariable $X$ gegenüber des Erwartungswertes $\mathbb{E}(X)$ an.
+ 	\begin{itemize}
+ 	\item[a)] $X\sim\mathcal{B}_p$, mit $\mathbb{E}(X)=p$
+ 	\begin{equation}
+ 	\begin{split}
+ 	\text{Var}(X) & = \left(1-p\right)^2 p+\left(0-p\right)^2\left(1-p\right)\\
+ 	& = \left(1-p\right)\left(p\left(1-p\right)+p^2\right)\\
+ 	& = \left(1-p\right)\left(p-p^2 + p^2\right)\\
+ 	& = \left(1-p\right)p\\
+ 	\text{und } \sigma(X)& = \sqrt{\left(1-p\right)p}
+ 	\end{split}
+ 	\end{equation}
  	
+ 	\item[b)] $X\sim\mathcal{U}_{\Omega_n}$ mit $\Omega_n = \{x_1,...,x_n\},\quad x_i\in\mathbb{R}$
+ 	\begin{equation*}
+ 	\begin{split}
+ 	\text{Dann ist } \mathbb{E}(X)& =\frac{1}{n}\sum_{x\in\Omega_n}x=:\bar{x}\\
+ 	\hookrightarrow\text{Var}(X)& = \sum_{i=1}^n\left(x_i-\bar{x}\right)^2\frac{1}{n}\\
+ 	& = \frac{1}{n}\sum_{i=1}^n\left(x_i-\bar{x}\right)^2\\
+ 	& = \frac{1}{n}\sum_{i=1}^n\left(x_i^2-2x_i\bar{x}+\bar{x}^2\right)\\
+ 	& = \frac{1}{n}\sum_{i=1}^n x^2_i -\frac{2\bar{x}}{n}\sum_{i=1}^n x_i +\bar{x}^2\\
+ 	& = \frac{1}{n}\sum_{i=1}^n x_i^2 -\bar{x}^2\\
+ 	& = \mathbb{E}(X^2)-\mathbb{E}(X)^2
+ 	\end{split}
+ 	\end{equation*}
+ 	\end{itemize}
+ 	
+ 	\subsection{Definition Zweiter Moment}
+ 	Sei $X$ eine Zufallsvariable mit Werten $x\in\Omega$ mit Wahrscheinlichkeiten $p_x$, wenn 
+ 	$$\sum_{x\in\Omega}x^2p_x$$ 
+ 	konvergent, dann nennt man diesen Wert \textit{das zweite Moment von $X$}.
+ 	$$\mathbb{E}(X^2)=\sum_{x\in\Omega}x^2p_x$$
+ 	\subsection{Theorem}
+ 	Sei $X$ eine Zufallsvariable mit reellen, diskreten Werten und dem Erwartungswert $\mathbb{E}(X)=m$. Wenn $\mathbb{E}(X^2)\in\mathbb{R}$, dann gilt:
+ 	$$\text{Var}(X)=\mathbb{E}(X^2)-\mathbb{E}(X)^2$$.
  	
  	
  	
