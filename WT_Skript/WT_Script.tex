@@ -33,7 +33,7 @@ heightrounded]{geometry}
 %\setlength{\headheight}{52pt}
 \fancyhf{}
 \rhead{\today}
-\lhead{WT Vorlesung 18/19}
+\lhead{Wahrscheinlichkeitstheorie}
 \chead{Phil Trommer}
 \rfoot{Seite \thepage}
 
@@ -41,11 +41,11 @@ heightrounded]{geometry}
 
 \renewcommand{\thefootnote}{\roman{footnote}}
 
-\titleformat{\section}
-  {\normalfont\large\bfseries}
-  {\thesection}
-  {1em}
-  {\uline{#1}}  
+%\titleformat{\section}
+%  {\normalfont\large\bfseries}
+%  {\thesection}
+%  {1em}
+%  {\uline{#1}}  
  
 \pagenumbering{arabic}
   
@@ -918,11 +918,87 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
  	Sei $X$ eine Zufallsvariable mit reellen, diskreten Werten und dem Erwartungswert $\mathbb{E}(X)=m$. Wenn $\mathbb{E}(X^2)\in\mathbb{R}$, dann gilt:
  	$$\text{Var}(X)=\mathbb{E}(X^2)-\mathbb{E}(X)^2$$.
  	
+ 	\subsubsection{Beispiele}
+ 	\paragraph{Beispiel 1:}
+ 	$X\sim \mathcal{B}_{n,p}$ , $\mathbb{E}(X)=np$ , Var$(X)=$ ? bzw. $\sigma(X)=$?
+	\begin{equation*}
+	\begin{split}
+	\text{Var}(X) & = \mathbb{E}(X^2)-(np)^2\\
+	& = \sum_{k=o}^n k^2 \binom{n}{k}p^k (1-p)^{n-k} -(np)^2\\
+	& = \sum_{k=1}^n npk\binom{n-1}{k-1}p^{k-1}(1-p)^{(n-1)-(k-1)}\\
+	& = np\sum_{l=0}^{n-1} (l+1)\binom{n-1}{l}p^l(1-p)^{(n-1)-l} , \quad 
+\tilde{X}\sim\mathcal{B}_{n-1,p}\\
+	& = np\left(\mathbb{E}(\tilde{X})+1\right)-(np)^2 = np\left(\left(n-1\right)p+1\right)-(np)^2
+= np(1-p)
+	\end{split}
+	\end{equation*}	 	
+ 	und $\sigma(X)=\sqrt{\text{Var}(X)}=\sqrt{np(1-p)}$
  	
+ 	\paragraph{Beispiel 2}
+ 	$X$ ist eine Zufallsvariable mit Werten in $\{-1,1\}$ und zugehöriger Zähldichte
+ 	$$\rho(-1) = \frac{1}{2} \text{ und } \rho(1)=\frac{1}{2}$$
+ 	\begin{equation*}
+ 	\begin{split}
+ 	\hookrightarrow \mathbb{E}(X) & = (-1)\frac{1}{2} + 1\cdot \frac{1}{2}=0\\
+ 	\text{Var}(X) & = (-1)^2\frac{1}{2} + 1^2\cdot \frac{1}{2}=\frac{1}{2} + \frac{1}{2}=1\\
+ 	\end{split}
+ 	\end{equation*}
+ 	$$\hookrightarrow \sigma(X)=\sqrt{1}=1$$
  	
+ 	\paragraph{Beispiel 3}
+ 	$$X\sim P_{\lambda} \quad (\lambda>0), \: \mathbb{E}(X)=\lambda$$
+ 	Wir brauchen das zweite Moment von $X$:
+ 	\begin{equation*}
+ 	\begin{split}
+	\mathbb{E}(X^2) & =\sum_{k=0}^{\infty}k^2 e^{-\lambda}\frac{\lambda^k}{k!} \\
+	& = \lambda\cdot\sum_{k=1}^{\infty}k\cdot e^{-\lambda}\frac{\lambda^{k-1}}{(k-1)!}\\
+	& = \lambda\cdot\sum_{l=0}^{\infty}(l+1)e^{-l}\frac{\lambda^l}{l!} \: , \, l:=k-1\\
+	& = \lambda\cdot (\lambda+1)=\lambda^2 + \lambda	
+ 	\end{split}
+ 	\end{equation*}
  	
- 	
- 	
+ 	\section{Stochastische Unabhängigkeit}
+	\subsection{Definition}
+	Sei $\left(\Omega,\mathcal{P}(\Omega),P\right)$ ein diskreter W-Raum. Zwei Ereignisse $E,F\in\mathcal{P}(\Omega)$ heißen \textit{stochastisch Unabhängig} bezüglich $P$, wenn
+	$$P(E\cap F)=P(E) \cdot P(F)$$
+	gilt.
+	\paragraph{Beispiel:}
+	Es wird ein blauer und ein roter Spielwürfel geworfen. Im entsprechenden Laplace-Modell mit dem Ergebnisraum $\Omega=\{1,...,6\}^2$ sind die Ereignisse:
+	\begin{itemize}
+	\item[a)] $B$: der blaue Würfel zeigt die Augenzahl ``2''\\
+	$R$: der rote Würfel zeigt die Augenzahl ``4''\\	
+	stochastisch unabhängig, denn
+	$$|B|=|\left\{\left(b,r\right)\in\Omega: \: b=2\right\}|=6 \Rightarrow\: P(B)=\frac{6}{36}=\frac{1}{6}$$
+	$$|R|=|\left(\{\left(b,r\right)\in\Omega: \: r=4\right\}|=6 \Rightarrow\: P(R)=\frac{1}{6}$$
+	$$|B\cap R|=|\{(2,4)\}=1 \Rightarrow P(B\cap R) =\frac{1}{36}$$
+	d.h. $P(B\cap R) = P(B)\cdot P(R)$
+
+	\item[b)] $B$ und $R_{>2}$: der rote Würfel zeigt die Augenzahl $>2$ stochastisch unabhängig, denn 
+	$$|R_{>2}| = |\{(b,r)\in\Omega: \: r>2\}| = 6\cdot 4= 24 \Rightarrow P(R_{>2})=\frac{2}{3}$$
+	$$|B\cap R_{>2})=\frac{1}{9} = \frac{2}{3} \cdot \frac{1}{6} = P(B) \cdot P(R_{>2})$$
+
+	\item[c)] $B$ und $E_g$: beide Augenzahlen sind gerade \\
+	stochastisch \textit{abhängig}, denn
+	$$|E_g|=|\{(b,r)\in\Omega : \: b,r\in\{2,4,6\}\}|=9 \Rightarrow\: P(E_g)=\frac{1}{4}$$
+	$$|E_g \cap B|=|\{(b,r)\in\Omega : \: b=2,r\in\{2,4,6\}\}|=3 $$
+	$$\Rightarrow P(E_g \cap B)= \frac{1}{12}\neq \frac{1}{4} \cdot \frac{1}{6}=P(E_g)\cdot P(B)$$ 
+	
+	\item[d)] $B$ und $E$: beide Augenzahlen sind gerade oder beide sind ungerade
+	$$E=E_g \cup E_u \quad \Rightarrow P(E)=\frac{18}{36}=\frac{1}{2}$$
+	so dass $B$ und $E$ stochastisch unabhängig sind bezüglich $P=\mathcal{U}_{\Omega}$
+	\end{itemize}
+	
+	\paragraph{Bemerkung:}
+	Sei $\left(\Omega,\mathcal{P}\left(\Omega\right)\right)$ ein diskreter Ereignisraum. Dann sind je zwei disjunkte Ereignisse $E,F\in\mathcal{P}(\Omega)$ mit $E,F\neq\varnothing$ stochastisch abhängig bezüglich jedem W-Maß auf $\mathcal{P}(\Omega)$, dessen zugehörige Zähldichte $\rho$ auf $\Omega$ strikt positiv ist $\left(\rho\left(\omega\right)>0\, \forall \omega\in\Omega\right)$, denn 
+	$$P(E\cap F)=P(\varnothing)=0\neq \underbrace{P(E)}_{=\sum_{\omega\in E}\rho(\omega)>0}\cdot P(F)>0$$
+	
+	\subsection{Definition Unabhängige Zufallsvariablen}
+	Seien $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $X,Y$ zwei Zufallsvariablen auf $(\Omega,\mathcal{P}(\Omega),P)$ jeweils mit Werten in $\Omega_X$ beziehungsweise $\Omega_Y$. Dann heißen $X$ und $Y$ unabhängige Zufallsvariablen, wenn $\left\{X\in E\right\}$ und $\left\{Y\in F\right\}$ bezüglich $P$ stochastisch unabhängig sind für jede Wahl von Ereignissen $E\subset\Omega_X$ und $F\subset\Omega_Y$.
+	\paragraph{Beachte:}
+	$$\left\{X\in E\right\}=X^{-1}\underbrace{\left(E\right)}_{\in\Omega_X}=\{\omega\in\Omega:\: X(\omega)\in E\}$$  
+	
+	
+		 	
  	
  	
  	
