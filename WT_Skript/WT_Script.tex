@@ -996,19 +996,99 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	Seien $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $X,Y$ zwei Zufallsvariablen auf $(\Omega,\mathcal{P}(\Omega),P)$ jeweils mit Werten in $\Omega_X$ beziehungsweise $\Omega_Y$. Dann heißen $X$ und $Y$ unabhängige Zufallsvariablen, wenn $\left\{X\in E\right\}$ und $\left\{Y\in F\right\}$ bezüglich $P$ stochastisch unabhängig sind für jede Wahl von Ereignissen $E\subset\Omega_X$ und $F\subset\Omega_Y$.
 	\paragraph{Beachte:}
 	$$\left\{X\in E\right\}=X^{-1}\underbrace{\left(E\right)}_{\in\Omega_X}=\{\omega\in\Omega:\: X(\omega)\in E\}$$  
-	
-	
-		 	
+
+	Wir können die Unabhängigkeit von $X$ \& $Y$ wie folgt definieren(*):\\
+	$X,Y$ sind unabhängige Zufallsvariablen 
+	$$:\Leftrightarrow P(X\in E, Y\in F) = P(X\in E) \cdot P(Y\in F) \quad 	\forall E\subseteq\Omega_X \: , \forall F\subseteq\Omega_Y$$
+	Aus dieser Relation folgt(**):
+	$$P(X=x,Y=y)=P(X=x)\cdot P(Y=y) \quad \forall x\in\Omega_X \text{ und } \forall y\in\Omega_Y $$
+	Umgekehrt impliziert (**) die Relation (*), d.h. das $X$ und $Y$ unabhängig sind. Wie sieht man das?
+	\begin{itemize}
+	\item $$x\in\Omega\longmapsto\rho_X (x):=P(X=x) \text{ ist die Gewichtsfunktion der Verteilung } P_X \text{ von } X$$
+	\item $$y\in\Omega_Y\longmapsto\rho_Y(y):=P(Y=y) \text{ ist die Gewichtsfunktion der Verteilung } P_Y \text{ von } Y$$
+	\item $$(x,y)\in\Omega_X \times \Omega_Y\longmapsto P(X=x,Y=y) \text{ ist die Gewichtsfunktion der Verteilung einer Zufallsvariable mit Werten aus } \Omega_X \times \Omega_Y$$
+	\end{itemize}
+	\subsection{Lemma Unabhängigkeit}
+	Unter der Voraussetzung aus der Definition Unabhängige Zufallsvariablen (siehe 6.2) sind zwei Zufallsvariablen $X$ und $Y$ auf $(\Omega,\mathcal{P}(\Omega),P)$ unabhängig genau dann, wenn für jedes $x\in\Omega_X$ und jedes $y\in\Omega_Y$ gilt
+	$$P(X=x,Y=y)=P(X=x)\cdot P(Y=y)$$
+	\subsubsection{Beispiel 1}
+	$\mathcal{E}$: n-maliges Werfen eines Spielwürfels\\
+	$\hookrightarrow$ Der W-Raum zu diesem Zufallsexperiment ist:
+	$$(\Omega,\mathcal{P}(\Omega),P=\mathcal{U}_{\Omega}) \text{ mit } \Omega:=\{1,...6\}^n$$
+	Seien $1\leq k , l\leq n$ mit $k\neq l$. Dann sind
+	\begin{itemize}
+	\item $X_k$: Augenzahl bei Wurf k, und
+	\item $X_l$: Augenzahl bei Wurf l
+	\end{itemize}			 	
+ 	Denn für jedes $x\in\Omega_{X_k}:=X_k(\Omega)$ und jedes $y\in\Omega_{X_l}:=X_l(\Omega)$ erhalten wir
+ 
+ 	\begin{equation*}
+	\begin{split}
+	P(X_k =x,X_l = y) & = P(\{\omega\in\Omega:\,\omega_k =x ,\omega_l = y\})\\
+	& = \frac{6^{n-2}}{6^n}=\frac{1}{6}\cdot\frac{1}{6}=P(X_k=x)\cdot P(X_l =y)
+	\end{split}
+	\end{equation*}	 	
+ 	Nach Lemma 6.3 sind somit $X_k$ und $X_l$ zwei unabhängige Variablen.
+ 	\subsubsection{Beispiel 2}
+ 	\paragraph{Gegeben:}  eine Urne mit 10 gleichartigen, aber nummerierten Kugeln.
+ 	\paragraph{Zufallsexperiment:} Stichprobe ohne Zurücklegen: es werden 2 Kugeln nacheinander gezogen
+ 	\begin{itemize}
+ 	\item $X$: Nummer der ersten gezogenen Kugel
+ 	\item $Y$: Nummer der zweiten gezogenen Kugel
+ 	\end{itemize}
+ 	\subsection{Definition Familie von Ereignissen}
+ 	Seien $(\Omega ,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $I$ eine beliebige, nicht leere Indexmenge. Eine Familie von Ereignissen $E_i\in\mathcal{P}(\Omega)\in I$, heißt \textit{stochastisch unabhängig}, wenn für jede endliche Teilmenge $J\in I$
+ 	$$P\left(\bigcap_{j\in J}E_j\right)=\prod_{j\in J}P(E_j)$$
+ 	gilt.
+ 	\paragraph{Beispiel:}
+ 	(Kontext: Beispiele zur Definition 6.1)\\
+ 	Die Familie der Ereignisse $B,E$ und $R$ ist nicht stochastisch unabhängig, obwohl die Ereignisse \textit{paarweise} stochastisch unabhängig sind ( Wie wir bereits nachgerechnet haben), denn
+ 	$$B\cap\ R\cap E=\varnothing \quad \Rightarrow P(\varnothing )=0\neq P(E)\cdot P(R)\cdot P(B)$$
+ 	\paragraph{Bemerkung:}
+ 	Auch die Familie $B,E$ und $R_4$: \textbf{roter Würfel zeigt ``4''} ist stochastisch \textit{nicht} unabhängig.
  	
+ 	\subsection{Definition Unabhängige Familie}
+ 	Seien $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum, $I$ eine beliebige, nicht-leere Indexmenge und $X_i ,i\in I$ eine Familie von Zufallsvariablen auf $(\Omega,\mathcal{P}(\Omega),P)$ jeweils mit Werten in einer höchstens abzählbaren
+ 	$\Omega_{X_i}$. Dann heißt die Familie $X_i ,i\in I$ unabhängig, wenn für jede Wahl von Ereignissen $E_i \subset\Omega_i , i\in I$ eine stochastisch unabhängige Familie ist.
+ 	\paragraph{Standardbeispiel:}
+ 	Seien $n\in\mathbb{N}$ , $\Omega=\{1,...,6\}^n$ und  	
+ 	$$\underbrace{(\Omega,\mathcal{P}(\Omega),P=\mathcal{U}_{\Omega})}_{\text{Experiment } \mathcal{E}: \text{ n-maliges würfeln eines Würfels}} $$. \\
+ 	Wir betrachten:
+ 	$$X_i : (\omega_1,...\omega_n)\in\Omega\longmapsto\omega_i$$
+ 	$$P(X_{i_1}=x_{i_1},...,X_{i_m}=x_{i_m})=\frac{6^{n-m}}{6^n}=\frac{1}{6^m}=
+ 	\prod^m_{l=1}P(X_{i_l}=x_{i_l})$$
+ 	\section{Bedingte Wahrscheinlichkeit}
+ 	\paragraph{Formaler Rahmen:}
+ 	$(\Omega,\mathcal{P}(\Omega),P)$ diskretes W-Raum
+ 	\begin{itemize}
+ 	\item[Gegeben:] $A,B\subseteq\Omega$ zwei Ereignisse
+ 	\item[Annahme:] $P(A)>0$
+ 	\end{itemize}
+ 	 	
  	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
+ 	\paragraph{Szenario:}
+ 	Wir beobachten, dass $A$ eingetreten ist.\\
+ 	$\hookrightarrow$ Frage: Wie ändert sich unter der obigen Annahme unsere Wahrscheinlichkeitsbewertung für $B$?\\
+ 	$\hookrightarrow$ Fallunterscheidung:
+ 	\begin{itemize}
+ 	\item Sind $A$ und $B$ stochastisch unabhängig\\
+ 	$\hookrightarrow$ kein Anlass für eine Neubewertung
+ 	\item $A$ \& $B$ sind nicht stochastisch unabhängig\\
+ 	$\hookrightarrow$ Wie genau soll die Neubewertung ausfallen?
+ 	\end{itemize}
+ 	\paragraph{Beispiel:}
+ 	Gegeben ist eine Urne mit $N$ Kugeln, davon genau $s$ schwarze und $w$ weiße. D.h. $N=s+w$.
+ 	$\hookrightarrow$ Modell: $U=\underbrace{\{1,...,w\}}_{\text{Teilmenge der weißen Kugeln}} \cup\underbrace{\{ w+1,...,s+w\}}_{\text{Teilmenge der schwarzen Kugeln}}$
+ 	\paragraph{Zufallsexperiment:}
+ 	Es werden zwei Kugeln gezogen, ohne Zurücklegen.
+ 	$$\hookrightarrow \text{ Ergebnismenge }: \Omega =\{(k,l):\: k,l\in U, k\neq l\}$$
+ 	$$\hookrightarrow |\Omega | = N\cdot (N-1) = (s+w)\cdot (s+w-1)$$
+ 	$$P=\mathcal{U}_{\Omega} \text{ Gleichverteilt auf } \Omega$$
+ 	Wir betrachten die Ereignisse:
+ 	\begin{itemize}
+ 	\item[A]: 1. gezogene Kugel ist weiß
+ 	\item[B]: 2. gezogene Kugel ist weiß
+ 	\end{itemize}
  	
  	
  	
