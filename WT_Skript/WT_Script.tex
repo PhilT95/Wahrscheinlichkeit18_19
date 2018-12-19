@@ -1090,12 +1090,115 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
  	\item[B]: 2. gezogene Kugel ist weiß
  	\end{itemize}
  	
+ 	A und B sind \emph{nicht} stochastisch unabhängig bezüglich $P=\mathcal{U}_{\Omega}$, wobei $\Omega=\{(k,l):\: k,l\in\mathcal{U},k\neq l\}$, denn
+ 	\begin{itemize}
+ 	\item $P(A)=\frac{|A|}{(w+s)(w+s-1)}=\frac{w(w+s-1)}{(w+s)(w+s-1)}=\frac{w}{w+s}$
+ 	\item $P(B)=P(A)$ , da $|A|=|B| \:$ ($f:A\rightarrow B,(k,l)\rightarrow(l,k)$ ist eine Bijektion)
+ 	\item $P(A\cap B)=\frac{|A\cap B|}{(w+s)(w+s-1)}\frac{w\cdot (w-1)}{(w+s)(w+s-1)}\neq \left(\frac{w}{w+s}\right)^2=P(A)\cdot P(B)$\\
+ 	$\hookrightarrow$ Bedingung für stochastische Unabhängigkeit \emph{nicht} erfüllt $\Rightarrow$ A \& B stochastisch unabhängig bezüglich $P=\mathcal{U}_{\Omega}$
+ 	\end{itemize}
+ 	\paragraph{Annahme:}
+ 	A ist eingetreten (1. gezogene Kugel ist weiß)
+ 	\paragraph{$\hookrightarrow$ Frage:} 
+ 	Wie groß ist die Wahrscheinlichkeit für B unter dieser Annahme?
+ 	\paragraph{Antwort:}
+ 	$$\frac{w-1}{(w+s-1)}\neq\frac{w}{s+w}=P(B)$$
+ 	Hier gilt: 
+ 	$$\frac{w-1}{w+s-1}=\frac{P(A\cap B)}{P(A)}=\frac{w(w-1)}{(w+s)(w+s-1)}\cdot\frac{w+s}{w}$$
+ 	\subsection{Definition Bedingte Wahrscheinlichkeit}
+ 	Sei $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $A\subseteq\Omega$ mit $P(A)>0$. Dann heißt für jedes $B\subseteq\Omega$
+ 	$$P(B|A):=\frac{P(A\cap B)}{P(A)}$$
+ 	\textit{bedingte Wahrscheinlichkeit} für $B$ gegen $A$.
+ 	\paragraph{Beachte:}
+ 	Im Spezialfall, das $A$ \& $B$ stochastisch unabhängig bezüglich $P$ sind, gilt
+ 	$$P(B|A)=P(B) \: \left(\text{denn } P(B|A)=\frac{P(A\cap B)}{P(A)}=\frac{P(A)\cdot P(B)}{P(A)}\right)$$
+ 	\paragraph{Bemerkung:}
+ 	Bedingen macht keine Aussagen über Kausalitäten!\\
+ 	$\hookrightarrow$ Beispiel:
+ 	\begin{itemize}
+ 	\item 1. gezogene Kugel bleibt verdeckt
+ 	\item 2. gezogene Kugel ist weiß (d.h. $B$ tritt ein)
+ 	\item[$\hookrightarrow$] \textbf{Frage:} Wahrscheinlichkeit dafür, dass $A$ eingetreten ist, d.h. die verdeckte Kugel weiß ist?
+ 	\item[$\hookrightarrow$] \textbf{Antwort:} $P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{w-1}{w+s-1}\neq P(A)$
+ 	\end{itemize}
+ 	$\hookrightarrow$ Das Ereignis $B$ hat keinen Einfluss auf das Eintreten von $A$. Trotzdem bewirkt $B$ eine Neubewertung der Wahrscheinlichkeit für $A$. Das liegt daran das $B$ Informationen aus $A$ enthält. $B$ wird nämlich durch $A$ beeinflusst.
+	
+	\paragraph{Beispiel:}
+	\label{defBedingteWS}
+	Ziehen einer Kugel aus einer von 2 Urnen.
+	\begin{itemize}
+	\item[Urne 1:] enthält 7 rote und 3 schwarze Kugeln
+	\item[Urne 2:] enthält 9 rote und 1 schwarze Kugel
+	\end{itemize}	 	
+ 	Es wird zufällig entschieden aus welcher Urne gezogen wird. (z.B. auf der Grundlage des Ergebnisses eines Münzwurfes)
+ 	\paragraph{Ergebnismenge des Zufallsexperimentes:}
+ 	$$\Omega=\{1,2\}\times\{1,...,10\}=\{(a,b):\: a\in\{1,2\} \: , \: b\in\{1,...,10\}\}$$
+ 	Wir betrachten die Ereignisse:
+ 	\begin{itemize}
+ 	\item[$A$] $=\{1\}\times\{1,...,10\}=\{(a,b)\in\Omega:\: a=1\}$ (es wird aus Urne 1 gezogen)
+ 	\item[$B$] $=\{2\}\times\{1,...,10\}=\{(a,b)\in\Omega:\: a=2\}$ (es wird aus Urne 2 gezogen)
+ 	\item[$R$] $=\{(a,b)\in\Omega\: ,\: a=1,\: b\leq 7\}\cup\{(a,b)\in\Omega:\: a=2,\: b\leq 9\}$
+ 	\item[$S$] $=\{(a,b)\in\Omega\: ,\: a=1,\: b>7 \}\cup\{(a,b)\in\Omega:\: a=2,\: b=10\}$ 
+ 	\end{itemize}
+ 	\paragraph{$\hookrightarrow$ Frage:}
+ 	\begin{itemize}
+ 	\item Wahrscheinlichkeit, dass eine rote Kugel gezogen wird, wenn die Wahl für Urne 1 fällt. D.h. wir fragen nach der bedingten Wahrscheinlichkeit:
+ 	$$P(R|A)=\frac{P(R\cap A)}{P(A)}$$
+ 	\item Wahrscheinlichkeit dafür, dass eine schwarze Kugel gezogen wird, wenn die Wahl auf Urne 1 fällt:
+ 	\begin{equation*}
+ 	\begin{split}
+ 	P(S|A) & =\frac{P(S\cap A)}{P(A)}\\
+ 	& = \frac{|S\cap A|}{|\Omega|}\cdot\frac{|\Omega|}{|A|}\\
+ 	& = \frac{|S\cap A|}{|A|}\\
+ 	& =\frac{3}{10}
+ 	\end{split}
+ 	\end{equation*}
+ 	\item Wie groß ist die Wahrscheinlichkeit, eine rote Kugel zu ziehen? D.h. $P(R)=$?
+ 	$$P(R)=\underbrace{\frac{1}{2}\cdot\frac{7}{10}+\frac{1}{2}\cdot\frac{9}{10}}_{\text{Wofür stehen diese Zahlen genau}}$$
+ 	\begin{equation*}
+ 	\begin{split}
+	P(R) & =P(A)\cdot P(R|A) + P(B)\cdot P(R|B)\\
+	& =P(A)\cdot\frac{P(R\cap A)}{P(A)}+P(B)\cdot\frac{P(R\cap B)}{P(B)}\\
+	& (\text{da gilt: } A\cap B = \varnothing \Rightarrow (A\cap R) \text { und } (B\cap R) \text{ sind disjunkt})\\
+	& =P\left(\left(R\cap A\right) \cup \left(R\cap B\right)\right)\\
+	& =P\left(R\cap\underbrace{(A\cup B)}_{=\Omega}\right)\\
+	& =P(R)	
+ 	\end{split}
+ 	\end{equation*}
+ 	\end{itemize}
  	
+ 	\subsection{Satz von der totalen Wahrscheinlichkeit}
+ 	Sei $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $n\in\mathbb{N}$. die Ereignisse $H_1,...H_n \subset\Omega$ seien eine Zerlegung von $\Omega$, d.h. 
+ 	$$H_i \cap H_j = \varnothing \quad \forall i,j\in\{1,...,n\},\: i\neq j \text{ und } \bigcup_{i=1}^n H_i =\Omega$$
+ 	Gilt $P(H_j)>0$  $\forall j=1,...,n$ , dann gilt für jedes Ereignis $A\subset\Omega$
+ 	$$P(A)=\sum_{j=1}^n P(H_j)\cdot P(A|H_j)$$
+ 	Eine weitere mögliche Frage: Wie groß ist die Wahrscheinlichkeit, dass die gezogene rote Kugel aus Urne 1 stammt.(siehe \ref{defBedingteWS})
+ 	\begin{itemize}
+ 	\item[$\hookrightarrow$] Frage: $P(A|R)=?$
+ 	\item[$\hookrightarrow$] \say{Problem}: Aus der Aufgabenstellung ist statt $P(A|R)$ die bedingte Wahrscheinlichkeit $P(R|A)$ leicht herzuleiten 
+ 	\item[$\hookrightarrow$] Ansatz siehe \say{Formel von Bayer}(siehe  \ref{satzBayer})	
+ 	\end{itemize}
  	
+ 	\subsection{Satz Formel von Bayer}
+ 	\label{satzBayer}
+ 	Für alle Ereignisse $A,B\subseteq\Omega$ mit $P(A)>0$ gilt
+ 	$$P(B|A)=\frac{P(A|B)\cdot P(B)}{P(A)}$$
+ 	\paragraph{Beweis:}
+ 	\begin{equation*}
+ 	\begin{split}
+	\frac{P(A|B)\cdot P(B)}{P(A)} & =\frac{\frac{P(A\cap B)}{P(B)}\cdot P(B)}{P(A)}\\
+	& =\frac{P(A\cap B)}{P(A)}\\
+	& =P(B|A) 	
+ 	\end{split}
+ 	\end{equation*}
  	
- 	
- 	
- 	
+
+
+
+
+
+
+
 
 
 
