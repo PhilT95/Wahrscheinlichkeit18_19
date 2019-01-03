@@ -268,27 +268,26 @@ heightrounded]{geometry}
   
 	\end{tikzpicture}
 \newpage
-	Es gilt $|U| = n$ , k ist stetig
-	Zu Var I : \newline
-	\say{Anzahl der 7 stelligen Telefonnummern ($10^7$)} \newline
-	Zu Var II : \newline
-	\say{Platzierung der ersten 3 Gewinner eines Wettbewerbes mit n Teilnehmern} = $n*(n-1)(n-2)$ \newline
-	Zu Var IV : \newline
+	Es gilt $|U| = n$ , k ist stetig\\
+	\textbf{Zu Var I :} \\
+	\say{Anzahl der 7 stelligen Telefonnummern ($10^7$)} \\
+	\textbf{Zu Var II :} \\
+	\say{Platzierung der ersten 3 Gewinner eines Wettbewerbes mit n Teilnehmern}\\
+	$=n*(n-1)(n-2)$ \\
+	\textbf{Zu Var IV :} \\
 	\say{Wahlergebnisse einer Wahl in Parteien \& k Wähler (mit je einer Stimme)} 
 	$$\Omega=\{(a_1,....,a_k), a_i\in\bigcup, \forall i=1,...,k$$
 	$$\text{und} \quad a_1\leq a_2 \leq a_3 \leq ... \leq a_k\}$$
-	$\hookrightarrow$ hiermit wirf die Vorgabe \say{ohne Anordnung} formuliert \newline
-	Betrachte auf $\Omega$ die Abbildung f, die durch folgende Vorschrift definiert ist.
+	$\hookrightarrow$ hiermit wird die Vorgabe \say{ohne Anordnung} formuliert \newline
+	Betrachte auf $\Omega$ die Abbildung $f$, die durch folgende Vorschrift definiert ist.
 	$$(a_1,....,a_k)\rightarrow(a_1+0,a_2+1,a_3+2,...,a_k+k-1)$$
-	Die Abbildung f bildet $\Omega$ bijektiv auf $B = f(\Omega)$ ab, wobei
+	Die Abbildung $f$ bildet $\Omega$ bijektiv auf $B = f(\Omega)$ ab, wobei
 	$$B=\left\{(b_1,...,b_k)|b_1<b_2<...<b_k, \quad b_i\in\bigcup_{n+k-1},\forall i=1,...k\right\}$$
 	Damit ist $|\Omega| = |B|$ ($\Omega$ und $B$ sind gleichmächtig). $B$ ist aber die Ergebnismenge des 
-	Zufallsexperimentes der Var III im Urnenmodell.
+	Zufallsexperimentes der \textbf{Var III} im Urnenmodell.
 	\paragraph{Wir beobachten: }
 	Die Ergebnismengen von Zufallsexperimenten die jeweils eine der Varianten im 
-	Urnenmodell entsprechen, lassen sich in der Form eines karthesischen Produktes von (endlichen) Mengen bzw.
-	einer Teilmenge davon, darstellen.
-\newpara
+	Urnenmodell entsprechen, lassen sich in der Form eines karthesischen Produktes von (endlichen) Mengen beziehungsweise	einer Teilmenge davon, darstellen.
 	\subsection{Definition Karthesisches Produkt}
 		Seien $A,B$ zwei beliebige Mengen. Dann heißt
 		$$A\times B :=\{(a,b):a\in A, b\in B\}$$
@@ -371,10 +370,10 @@ heightrounded]{geometry}
 		\item Für Varianten II - IV müssten bestimmte Pfade weggelassen bzw. miteinander identifiziert
 		werden (z.B. kein doppeltes Vorkommen).
 	\end{itemize}
-	\subsection{Lemma}
+	\subsection{Lemma Mächtigkeit des karthesischen Produktes}
 	Für zwei eindliche Mengen $A,B$ gilt
 	$$|A\times B| = |A|*|B|$$
-	\subsection{Satz}
+	\subsection{Satz Binomialkoeffizient}
 	$$\binom{n}{k}=\binom{n}{n-k}$$
 	Beweis: 
 	\begin{itemize}
@@ -394,6 +393,7 @@ heightrounded]{geometry}
 	der Faktoren kann nur die Werte \say{a} oder \say{b} annehmen. \newline
 	$\hookrightarrow$ Die Terme sind von der Gestalt $a^k b^{n-k}$, wobei $k=0,...,n$
 	Für jedes feste $k$ gibt es genau $\binom{n}{k}$ Möglichkeiten $\blacksquare$
+\newpage
 \section{Diskrete Wahrscheinlichkeitsmodelle}
 	Als Verallgemeinerung des Laplace-Modells im folgendem Sinn:
 	\begin{itemize}
