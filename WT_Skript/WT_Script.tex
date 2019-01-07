@@ -1192,9 +1192,110 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
  	\end{split}
  	\end{equation*}
  	
-
-
-
+ 	\paragraph{Beispiel:}
+ 	Ziehen einer Kugel aus einer von zwei Urnen:
+ 	\begin{itemize}
+ 		\item[] Urne 1: genau 7 rote Kugeln und 3 schwarze Kugeln $\Rightarrow P(R|A)=\frac{7}{10}$
+ 		\item[] Urne 2: genau 1 rote und 9 schwarze Kugeln $\Rightarrow P(R|B)=\frac{1}{10}$
+  	\end{itemize}
+ 	enthält.
+ 	$$\hookrightarrow P(R)=P(R|A)\cdot P(A) + P(R|B)\cdot P(B)=\frac{2}{5}$$
+ 	\paragraph{$\hookrightarrow$ Frage:}
+	$P(A|R)= ?$ ( $\widehat{=}$ Wahrscheinlichkeit dafür, dass die gezogene Kugel aus Urne 1 stammt, wenn die Kugel rot ist.) 
+	\paragraph{Antwort:}
+	$$P(A|R)=\frac{P(R|A)\cdot P(A)}{P(R)}=\frac{\frac{7}{10}\cdot 
+\frac{1}{2}}{\frac{2}{5}}=\frac{7}{8}$$	
+ 	\paragraph{Zusammenfassung:}
+ 	Durch das Eintreten eines Ereignisses A muss die Wahrscheinlichkeit von allen anderen Ereignissen angepasst werden.\\
+ 	$\hookrightarrow$ Übergang zu einem neuen/modifizierten W-Maß $P_A$, welches die Information über das Eintreten von $A$ berücksichtigt.\footnote{$P\rightsquigarrow^A P_A$}\\
+ 	Wir fordern:
+ 	\begin{itemize}
+ 		\item[F1)] $P_A(A)=1$ , \textbf{Motivation:} A stellt ein sicheres Ereignis dar
+ 		\item[F2)] Es gibt ein $k_A >0$, so dass für jedes $C\subset A$gilt:
+ 		$$P_A (C)=k_A \cdot P(C)$$
+ 		$\hookrightarrow$ \textbf{Motivation/Beispiel:}
+ 		\[
+ 		\text{WS für }=\left\{\begin{array}{lr}
+ 		\text{Schnee} & = \frac{1}{3}\\
+ 		\text{Regen} & = \frac{1}{3}\\
+ 		\text{niederschlagsfrei} & = \frac{1}{3}
+ 	\end{array}\right.
+ 	\] 
+ 	\end{itemize}
+ 	
+ 	\subsection{Satz Existenz und Eindeutigkeit bedingter W-Maße}
+ 	Sei $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $A\subset\Omega$ mit $P(A)>0$. Dann existiert genau ein W-Maß
+ 	$$P_A\: : \: \mathcal{P}(\Omega)\rightarrow [0,1]$$
+ 	mit den Eigenschaften F1) und F2), nämlich 
+ 	\begin{equation}
+ 	\label{eq01}
+ 	\mathcal(P)\ni B\mapsto P_A(B):=P(B|A)
+ 	\end{equation}
+ 	
+ 	\paragraph{Beweis:}
+ 	\begin{itemize}
+ 		\item[1)] Wir verifizieren, dass Gleichung (\ref{eq01}) F1) \& F2 erfüllt:
+ 		\begin{itemize}
+ 			\item[F1)] $$P_A (A)=P(A|A)=\frac{P(A\cap A)}{P(A)}=1$$
+ 			\item[F2)] $$C\subset A\Rightarrow P_A(C)=P(C|A)=\frac{P(C\cap A)}{P(A)}=
+ 			\frac{1}{P(A)}\cdot P(A)$$
+ 			$\hookrightarrow$ F2) ist erfüllt mit $k_A = \frac{1}{P(A)}$ 
+		\end{itemize}
+		\item[2)] Sei $P_A$: $P(\Omega)\rightarrow[0,1]$ ein W-Maß mit F1) \& F2). Dann gilt:
+		\begin{equation}
+		\label{eq02}
+		P_A \text{ F1) erfüllt }\Rightarrow P_A(A^C) = 1-P_A (A)=0
+		\end{equation}
+		nun ist $(A,A^C)$ eine Zerlegung von $\Omega$\\
+		$\hookrightarrow$ Nun betrachten wir für die beliebige $B\subset \Omega$ die Zerlegung
+		$$B=(B\cap A)\dot{\cup} (B\cap A^C)$$
+		$$\hookrightarrow P_A (B)=P_A (\underbrace{B\cap A}_{\subset A}) + 
+\underbrace{P(\underbrace{B\cap A^C}_{\subset A^C})}_{=0, \text{ wegen }(\ref{eq02})}$$
+		\begin{equation}
+		\label{eq03}
+		\hookrightarrow P_A(B)=P_A(B\cap A) = k_A\cdot P(B\cap A)
+		\end{equation}
+		Setze in Gleichung (\ref{eq03}) : $B=A$
+		$$\hookrightarrow 1=P_A (B=A)=k_A\cdot P(A\cap A)= k_A \cdot P(A)$$
+		$$\Leftrightarrow k_A = \frac{1}{P(A)}$$	   		 
+ 	\end{itemize}
+ 	
+ 	\paragraph{Beispiel:} 
+ 	Ein Beutel mit 3 Münzen:
+ 	\begin{itemize}
+ 		\item eine gewöhnliche Münze: \textbf{KZ}
+ 		\item eine Münze: \textbf{KK}
+ 		\item eine Münze: \textbf{ZZ}
+ 	\end{itemize}
+	Eine Münze wird zufällig gezogen und geworfen:
+	
+	\paragraph{Annahme:} 
+	Ergebnis ist \say{Zahl} (oben zu sehen)
+	
+	\paragraph{Frage:}
+	Was ist die Wahrscheinlichkeit dafür, dass auf der Rückseite (unten) \say{Kopf} liegt?\\
+	Wir formulieren die relevanten Ereignisse.
+	\begin{itemize}
+		\item[A:] gezogene Münze ist ZZ
+		\item[B:] gezogene Münze ist KK
+		\item[C:] gezogene Münze ist KZ
+		\item[D:] geworfene Münze zeigt nach oben \say{Z} (Zahl)
+		\item[E:] geworfene Münze zeigt nach unten \say{K} (Kopf)
+	\end{itemize}
+	Mit dieser Bezeichnung lautet die gestellte Frage: $P(E|D)=$? \\
+	Definitionsgemäß gilt: 
+	$$P(E|D)=\frac{P(E\cap D)}{P(D)}$$
+	\begin{align*}
+	\hookrightarrow P(D)&= P(D|A)\cdot P(A) + P(D|B)\cdot P(B) + P(D|C)*P(C)\\
+	 &= 1 \cdot \frac{1}{3} + 0 \cdot \frac{1}{3} + \cdot \frac{1}{2} \cdot\frac{1}{3}\\
+	  &= \frac{1}{2}
+	\end{align*}
+	\begin{align*}
+	P(D\cap E) &= P(D\cap E|A)\cdot P(A) + \cdots\\
+	 &= 0 \cdot \frac{1}{3} + 0\cdot\frac{1}{3} + \frac{1}{2}\cdot\frac{1}{3}\\
+	 &=\frac{1}{6}
+	\end{align*}
+	$$\hookrightarrow P(E|D) = \frac{\frac{1}{6}}{\frac{1}{2}}=\frac{1}{3}$$
 
 
 
