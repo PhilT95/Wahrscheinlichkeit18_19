@@ -1301,35 +1301,36 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 
 \section{Gemeinsame Verteilung}
 	\paragraph{Ausgangspunkt:}
-	Ein diskreter W-Raum $(\Omega,\mathcal{P}(\Omega),P)$.\\
+	Es existiert ein diskreter W-Raum $(\Omega,\mathcal{P}(\Omega),P)$.\\
 	Gegeben seien zwei Abbildungen $X$ und $Y$ auf $(\Omega,\mathcal{P}(\Omega),P)$.\\
 	$\hookrightarrow$ Sie stellen Zufallsvariablen dar mit jeweils Werten in $X(\Omega):=\Omega_X$ und $Y(\Omega)=:\Omega_Y$, d.h.
 	$$X:\Omega\rightarrow\Omega_X \text{ und } Y:\Omega\rightarrow\Omega_Y$$
 	$X$ und $Y$ heißen unabhängige (siehe \ref{sec6.2}), wenn gilt:
-	$$P(X\in A, Y\in B)=P(X\in A) \cdot P(Y\in B), \:\forall A\subset\Omega_X, \forall B\subset\Omega_Y$$ 
+	$$P(X\in A, Y\in B)=P(X\in A) \cdot P(Y\in B), \:\forall A\subset\Omega_X, \forall B\subset\Omega_Y$$ 	
 	
-	%Needs to be alignment --> linke Seite is extra alignment what gets reffered too	
-	\begin{itemize}
-		\item rechte Seite: $A\subset\Omega_X\rightarrow P(X\in A) \tilde{=}$ Verteilung von X\\
-		$B\subset\Omega_Y\rightarrow P(Y\in B) \tilde{=}$ Verteilung von Y
-		\item linke Seite: $(A\in\Omega_X , B\subset\Omega_Y)\rightarrow P(X\in A, Y\in B)$(*)
-		
-		
-	\end{itemize}
+	\begin{align*}
+	\text{Rechte Seite: } & A\subset\Omega_X\rightarrow P(X\in A) \tilde{=} \text{ Verteilung von } X\\
+	& B\subset\Omega_Y\rightarrow P(Y\in B) \tilde{=}  \text{ Verteilung von } Y
+	\end{align*}
+	
+	\begin{align}
+	\label{gemeinVerteilungGleichung}
+	\text{Linke Seite: } &  (A\in\Omega_X , B\subset\Omega_Y)\rightarrow P(X\in A, Y\in B)
+	\end{align}
 	
 			
 	
 	\paragraph{Frage:}
-	Stellt die Abbildung (*) ebenfalls eine Verteilung/W-Maß dar?
+	Stellt die Abbildung (siehe Gleichung(\ref{gemeinVerteilungGleichung}) ebenfalls eine Verteilung/W-Maß dar?
 	\paragraph{Antwort:}
-	Das ist nicht der Fall, da der Definitionsbereich der Abbildung (*) zu klein ist. Er lässt sich nur mit einer echten Teilmenge der Potenzmenge des karthesischen Produktes $\Omega_X \times\Omega_Y$ identifizieren.
+	Das ist nicht der Fall, da der Definitionsbereich der Abbildung (Gleichung \ref{gemeinVerteilungGleichung}) zu klein ist. Er lässt sich nur mit einer echten Teilmenge der Potenzmenge des karthesischen Produktes $\Omega_X \times\Omega_Y$ identifizieren.
 	\paragraph{Beispiel:}
 	$\underbrace{\{1,2\}}_{=\Omega_M} \times \underbrace{\{1,...,6\}}_{=\Omega_W} \tilde{=}$ Ergebnismenge zum Zufallsexperiment,
 	bei den eine Münze und ein Würfel geworfen werden. Betrachte das Ereignis:
 	$$E:=\{(1,2)\: , \: (2,1)\}\subseteq\Omega_M \times \Omega_W$$
 	$\hookrightarrow$ Offensichtlich existiert keine Teilmenge $A\subset\Omega_M$ und $B\subset\Omega_W$, so dass
 	$$E=A\times B=\{(x,y)\: : \: x\in A, y\in B\}$$
-	\paragraph{Diskussion:} minimale Forderung an die Erweiterung des Definitionsbereiches(aus (*)). \\
+	\paragraph{Diskussion:} Wir stellen eine minimale Forderung an die Erweiterung des Definitionsbereiches (aus Gleichung \ref{gemeinVerteilungGleichung}). \\
 	$\hookrightarrow$ abstrakte Formulierungen:
 	Sei $\Omega$ eine Menge und $A$ ein System von Ereignissen bzw. Teilmengen von $\Omega$. Wir fordern:
 	\begin{enumerate}
@@ -1352,7 +1353,7 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	Beachte: 
 	$$P_{(X,Y)}(E)=P((X,Y)\in E)= P(\{\omega\in\Omega: \: (X(\omega),Y(\omega))\in E\}$$
 	\paragraph{Bemerkung:}
-	Man kann zeigen, dass es eine eindeutige Fortsetzung der Abbildung (*) zu einem W-Maß auf $\mathcal{P}(\Omega_X \times \Omega_Y)$ gibt und diese dann mit der gemeinsamen Verteilung von $X$ und $Y$ übereinstimmt.
+	Man kann zeigen, dass es eine eindeutige Fortsetzung der Abbildung (Gleichung \ref{gemeinVerteilungGleichung}) zu einem W-Maß auf $\mathcal{P}(\Omega_X \times \Omega_Y)$ gibt und diese dann mit der gemeinsamen Verteilung von $X$ und $Y$ übereinstimmt.
 	
 	\subsection{Definition Produktmaß}
 	Seien $Q_1$ und $Q_2$ zwei diskrete W-Maße jeweils auf der Potenzmenge $\mathcal{P}(\Omega_1)$ und $\mathcal{P}(\Omega_2)$. Dann heißt das W-Maß $P$ auf $\mathcal{P}(\Omega_1 \times \Omega_2)$ mit der Eigenschaft:
