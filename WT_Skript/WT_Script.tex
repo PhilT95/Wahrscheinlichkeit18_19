@@ -993,6 +993,7 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	$$P(E\cap F)=P(\varnothing)=0\neq \underbrace{P(E)}_{=\sum_{\omega\in E}\rho(\omega)>0}\cdot P(F)>0$$
 	
 	\subsection{Definition Unabhängige Zufallsvariablen}
+	\label{sec6.2}
 	Seien $(\Omega,\mathcal{P}(\Omega),P)$ ein diskreter W-Raum und $X,Y$ zwei Zufallsvariablen auf $(\Omega,\mathcal{P}(\Omega),P)$ jeweils mit Werten in $\Omega_X$ beziehungsweise $\Omega_Y$. Dann heißen $X$ und $Y$ unabhängige Zufallsvariablen, wenn $\left\{X\in E\right\}$ und $\left\{Y\in F\right\}$ bezüglich $P$ stochastisch unabhängig sind für jede Wahl von Ereignissen $E\subset\Omega_X$ und $F\subset\Omega_Y$.
 	\paragraph{Beachte:}
 	$$\left\{X\in E\right\}=X^{-1}\underbrace{\left(E\right)}_{\in\Omega_X}=\{\omega\in\Omega:\: X(\omega)\in E\}$$  
@@ -1298,11 +1299,79 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	$$\hookrightarrow P(E|D) = \frac{\frac{1}{6}}{\frac{1}{2}}=\frac{1}{3}$$
 
 
-
-
-
-
-
-
+\section{Gemeinsame Verteilung}
+	\paragraph{Ausgangspunkt:}
+	Ein diskreter W-Raum $(\Omega,\mathcal{P}(\Omega),P)$.\\
+	Gegeben seien zwei Abbildungen $X$ und $Y$ auf $(\Omega,\mathcal{P}(\Omega),P)$.\\
+	$\hookrightarrow$ Sie stellen Zufallsvariablen dar mit jeweils Werten in $X(\Omega):=\Omega_X$ und $Y(\Omega)=:\Omega_Y$, d.h.
+	$$X:\Omega\rightarrow\Omega_X \text{ und } Y:\Omega\rightarrow\Omega_Y$$
+	$X$ und $Y$ heißen unabhängige (siehe \ref{sec6.2}), wenn gilt:
+	$$P(X\in A, Y\in B)=P(X\in A) \cdot P(Y\in B), \:\forall A\subset\Omega_X, \forall B\subset\Omega_Y$$ 
+	
+	%Needs to be alignment --> linke Seite is extra alignment what gets reffered too	
+	\begin{itemize}
+		\item rechte Seite: $A\subset\Omega_X\rightarrow P(X\in A) \tilde{=}$ Verteilung von X\\
+		$B\subset\Omega_Y\rightarrow P(Y\in B) \tilde{=}$ Verteilung von Y
+		\item linke Seite: $(A\in\Omega_X , B\subset\Omega_Y)\rightarrow P(X\in A, Y\in B)$(*)
+		
+		
+	\end{itemize}
+	
+			
+	
+	\paragraph{Frage:}
+	Stellt die Abbildung (*) ebenfalls eine Verteilung/W-Maß dar?
+	\paragraph{Antwort:}
+	Das ist nicht der Fall, da der Definitionsbereich der Abbildung (*) zu klein ist. Er lässt sich nur mit einer echten Teilmenge der Potenzmenge des karthesischen Produktes $\Omega_X \times\Omega_Y$ identifizieren.
+	\paragraph{Beispiel:}
+	$\underbrace{\{1,2\}}_{=\Omega_M} \times \underbrace{\{1,...,6\}}_{=\Omega_W} \tilde{=}$ Ergebnismenge zum Zufallsexperiment,
+	bei den eine Münze und ein Würfel geworfen werden. Betrachte das Ereignis:
+	$$E:=\{(1,2)\: , \: (2,1)\}\subseteq\Omega_M \times \Omega_W$$
+	$\hookrightarrow$ Offensichtlich existiert keine Teilmenge $A\subset\Omega_M$ und $B\subset\Omega_W$, so dass
+	$$E=A\times B=\{(x,y)\: : \: x\in A, y\in B\}$$
+	\paragraph{Diskussion:} minimale Forderung an die Erweiterung des Definitionsbereiches(aus (*)). \\
+	$\hookrightarrow$ abstrakte Formulierungen:
+	Sei $\Omega$ eine Menge und $A$ ein System von Ereignissen bzw. Teilmengen von $\Omega$. Wir fordern:
+	\begin{enumerate}
+		\item	$\Omega\in A$ 
+		\item	$E\in A \Rightarrow E^\complement = \Omega\setminus E\in A$
+		\item	$I$ eine abzählbare Indexmenge und $E_i \in A_i, i\in I$
+				$$\Rightarrow\bigcup_{i\in I}E_i \in A_i$$
+	\end{enumerate}
+	Im obigen Beispiel: 
+	\begin{align*}
+	E=\{(1,2),(2,1)\} & =\{(1,2)\}\cup\{(2,1)\}\\
+	& =\underbrace{\{(1)\}}_{=\Omega_M} \times \underbrace{\{(2)\}}_{=\Omega_W}
+	\end{align*}
+	Forderung (1)-(3) auf dem fiktivem System von Ereignissen in $\Omega_X \times\Omega_Y$, welches mit der Potenzmenge $\mathcal{P}(\Omega_X \times \Omega_Y)$ übereinstimmt.
+	
+	\subsection{Definition Gemeinsame Verteilung}
+	Seien $X$ und $Y$ zwei Zufallsvariablen auf einem gemeinsamen diskreten W-Raum\\ $(\Omega,\mathcal{P}(\Omega),P)$ mit Werten in $\Omega_X$ und $\Omega_Y$. Die \textit{gemeinsame Verteilung} von $X$ und $Y$ ist definiert als das W-Maß auf $\mathcal{P}(\Omega_X \times \Omega_Y)$ welches durch
+	$$E\in\mathcal{P}(\Omega_X \times \Omega_Y)\longmapsto P((X,Y)\in E)$$
+	gegeben ist. Wir bezeichnen es mit $P_{(X,Y)}$.
+	Beachte: 
+	$$P_{(X,Y)}(E)=P((X,Y)\in E)= P(\{\omega\in\Omega: \: (X(\omega),Y(\omega))\in E\}$$
+	\paragraph{Bemerkung:}
+	Man kann zeigen, dass es eine eindeutige Fortsetzung der Abbildung (*) zu einem W-Maß auf $\mathcal{P}(\Omega_X \times \Omega_Y)$ gibt und diese dann mit der gemeinsamen Verteilung von $X$ und $Y$ übereinstimmt.
+	
+	\subsection{Definition Produktmaß}
+	Seien $Q_1$ und $Q_2$ zwei diskrete W-Maße jeweils auf der Potenzmenge $\mathcal{P}(\Omega_1)$ und $\mathcal{P}(\Omega_2)$. Dann heißt das W-Maß $P$ auf $\mathcal{P}(\Omega_1 \times \Omega_2)$ mit der Eigenschaft:
+	$$P(E_1 \times E_2)=Q_1(E_1)\cdot Q_2(E_2),\: \forall E_i\in\mathcal{P}(\Omega_i),\: i=1,2$$
+	das \textit{Produktmaß} von $Q_1$ und $Q_2$ und wird mit $Q_1 \otimes Q_2$ bezeichnet. 
+	
+	\subsection{Satz Unabhängige Familie}
+	Seien $n\in\mathbb{N}$ , $n\geq2$. Die gemeinsame Verteilung einer Familie $X_i$ , $i=1,...,n$, von Zufallsvariablen jeweils mit der Verteilung $P_X$ ist gleich dem Produktmaß 
+	$$\bigotimes_{i=1}^n P_{X_i}$$ 
+	genau dann wenn die Familie \textit{unabhängig} ist.\\
+	Die Gewichtsfunktion $\rho$ der gemeinsamen Verteilung $P_{X_1, ..., X_n}$ einer unabhängigen Familie ist gleich dem Produkt der Gewichtsfunktion $\rho_i$ von $X_i$ , $i=1,...,n$, d.h.
+	$$\rho (x_1,...,x_n)=\prod_{i=1}^n \rho_i (x_i) \quad , \: \text{ für jedes } (x_1,...,x_n)\in\Omega_1 \times ... \times \Omega_n$$
+	\paragraph{Beispiel:} 
+	$$\rho(x_1,...,x_n)=\frac{1}{6^n}=\frac{1}{6}\cdot ... \cdot \frac{1}{6}=\rho(x_1)\cdot ... \cdot \rho(x_n)$$
+	als Gewichtsfunktion der Verteilung $P_{(X,Y)}$ wobei 
+	$$X \text{ : Augenzahl bei i Versuchen}$$
+	
+	
+	
+	
 
 \end{document}
