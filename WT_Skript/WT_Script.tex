@@ -1306,13 +1306,11 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	$\hookrightarrow$ Sie stellen Zufallsvariablen dar mit jeweils Werten in $X(\Omega):=\Omega_X$ und $Y(\Omega)=:\Omega_Y$, d.h.
 	$$X:\Omega\rightarrow\Omega_X \text{ und } Y:\Omega\rightarrow\Omega_Y$$
 	$X$ und $Y$ heißen unabhängige (siehe \ref{sec6.2}), wenn gilt:
-	$$P(X\in A, Y\in B)=P(X\in A) \cdot P(Y\in B), \:\forall A\subset\Omega_X, \forall B\subset\Omega_Y$$ 	
-	
+	$$P(X\in A, Y\in B)=P(X\in A) \cdot P(Y\in B), \:\forall A\subset\Omega_X, \forall B\subset\Omega_Y$$	
 	\begin{align*}
 	\text{Rechte Seite: } & A\subset\Omega_X\rightarrow P(X\in A) \tilde{=} \text{ Verteilung von } X\\
 	& B\subset\Omega_Y\rightarrow P(Y\in B) \tilde{=}  \text{ Verteilung von } Y
 	\end{align*}
-	
 	\begin{align}
 	\label{gemeinVerteilungGleichung}
 	\text{Linke Seite: } &  (A\in\Omega_X , B\subset\Omega_Y)\rightarrow P(X\in A, Y\in B)
@@ -1369,10 +1367,105 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	\paragraph{Beispiel:} 
 	$$\rho(x_1,...,x_n)=\frac{1}{6^n}=\frac{1}{6}\cdot ... \cdot \frac{1}{6}=\rho(x_1)\cdot ... \cdot \rho(x_n)$$
 	als Gewichtsfunktion der Verteilung $P_{(X,Y)}$ wobei 
-	$$X \text{ : Augenzahl bei i Versuchen}$$
+	$$X \text{ : Augenzahl bei } i \text{ Versuchen}$$
 	
 	
+	\paragraph{Annahme:}
+	$X$ und $Y$ sind \textbf{nicht} unabhängig!\\
+	$\hookrightarrow$ Wir benutzen das Konzept der bedingten Wahrscheinlichkeit/W-Maße:\\
+	Für jedes $A\in\mathcal{P}(\Omega_X)$ mit $P_X(A)>0$ gilt
+	$$P_{(X,Y)}(A\times B)=\underbrace{P_X(A)}_{=P_X(A)}\cdot P(Y\in B | X\in A)$$
 	
-	
+	\paragraph{``Beweis'':}
+	\begin{align*}
+	\text{Linke Seite} &= P\left(X^{-1}(A)\cap Y^{-1}(B)\right)\\
+	\text{Rechte Seite} &= P\left(X^{-1}(A)\right)\cdot
+\frac{P\left(Y^{-1}(B)\cap X^{-1}(A)\right)}{P\left(X^{-1}(A)\right)}
+	\end{align*}
 
+\pagebreak	
+\section{Das schwache Gesetz der großen Zahlen (GGZ)}
+	\paragraph{Ziel:}
+	Das Langzeitverhalten von Mittelwerten erfassen
+	\begin{center}
+	\textbf{Bernoulli's GGZ}
+	\end{center}
+	$\hookrightarrow$ Es beschreibt das Verhalten der Langzeitmittelwerte von Beobachtungswerten, die man bei unabhängig durchgeführten Bernoulli-Experimenten erhält.
+	\paragraph{Genauer:}
+	Seien $p\in(0,1)$ und $X\sim B_p$, d.h. $X$ ist Bernoulli-verteilt mit Erfolgswahrscheinlichkeit p\\
+	$\hookrightarrow$ Beispiel Münzwurf $\rightarrow$ bei fairer Münze ist $p=\frac{1}{2}$\\
+	Sei $n\in\mathbb{N}$. Es werden unabhängig voneinander $n$ Bernoulli-Experimente durchgeführt, die jeweils die Zufallsvariablen 
+	$$X_i\sim B_p \: , \quad i=1,...,n$$
+	beschrieben werden.\\
+	$\hookrightarrow$ Wir interessieren uns für die
+	\begin{itemize}
+		\item $\underbrace{\text{absolute Häufigkeit}}_{\tilde{=} \text{ zufällige Anzahl der Treffer}}$ der $\underbrace{\text{Treffer}}_{\tilde{=}X_i =1}$ bei $n$ Einzelexperimenten.
+		$$\hookrightarrow S_n = X_1 + ... + X_n$$
+		\item beziehungsweise die relative Häufigkeit der Treffer $\tilde{=} 
+\frac{1}{n}S_n =: \bar{S_n}$
+	\end{itemize}
+	Wir erinnern uns: $S_n \sim B_{n,p}$ , d.h. $S_n$ ist binomialverteilt zu den Parametern $n$ und $p$.
+	\paragraph{Ziel:}
+	Das Verhalten der relativen Häufigkeit der Treffer mit wachsender Anzahl $n$ der Versuche zu erfassen.
+	
+	\begin{itemize}
+		\item[$\hookrightarrow$] \textbf{Frage:} $n=10000$ Versuche mit einer fairen Münze\\
+		$\hookrightarrow$ Wie viele Treffer?\\
+		$\rightarrow$ \textbf{Antwort:} ungefähr $5000 \tilde{=} \frac{1}{2}$ als relative Häufigkeit der Treffer.
+		\item[$\hookrightarrow$] Variante: mit einer unfairen Münze mit Erfolgswahrscheinlichkeit $p\left(\neq\frac{1}{2}\right)$\\
+		$\hookrightarrow$ \textbf{Frage:} Wie hoch ist die relative Häufigkeit der Treffer?\\
+		\textbf{Antwort:} ungefähr $p$ 
+	\end{itemize}
+	
+	Es ist noch nicht klar, wie wir unsere Antwort formal darstellen können. Beispielsweise führt folgender naheliegender Ansatz nicht zum Ziel.
+	$$P\left(\left\{ \frac{1}{2n}\sum_{i=1}^{2n}X_i = \frac{1}{2}\right\}\right) = B_{2n, \frac{1}{2}}(\{n\})$$
+	$$=\binom{2n}{n}\cdot \frac{1}{2^{2n}}\rightarrow_{n\rightarrow\infty} 0$$
+	
+	\subsection{Satz Bernoullis GGZ}
+	\label{bernoulliGGZ}
+	Sei $p\in(0,1)$. Seien $X_i \sim B_p$ , $i\in\mathbb{N}$ und 
+	$$\bar{S_n}:=\frac{1}{2}\sum_{i=1}^{n}X_i \: , \quad n\in\mathbb{N}$$
+	Dann gilt für ein beliebiges $\epsilon >0$:
+	$$\lim_{n\to\infty} P\left(\left| \bar{S_n}-p\right|\geq\epsilon \right)=0$$	
+	Folgende Resultate gehen in den Beweis von Satz \ref{bernoulliGGZ} ein.
+	\begin{enumerate}
+		\item $$\mathbb{E}(\bar{S_n})=\mathbb{E}\left(\frac{1}{n}\sum_{i=1}^n X_i\right)= \frac{1}{n}\cdot np= p$$
+		\item $$Var(\bar{S_n})=Var\left(\frac{1}{n}S_n\right)=\frac{p(1-p)}{n}$$
+		\item Tschebyscheff-Ungleichung
+	\end{enumerate}	 
+	
+	\subsection{Lemma Rechenregeln für die Varianz}
+	Sei $X$ eine reelle, diskrete Zufallsvariable mit $\mathbb{E}(X)=m$ und $Var(X)=v$. Dann gilt für alle $a,b\in\mathbb{R}$:
+	$$Var(aX+b)=a^2\cdot Var(X)$$
+	\paragraph{Beweis:}
+	
+	\begin{align*}
+	Var(aX) &=\mathbb{E}\left(\left(aX\right)^2\right)-\left(\mathbb{E}\left(aX\right)\right)^2\\
+	\text{Liniarität des Erwartungswertes (siehe 5.6 } &= a^2\mathbb{E}(X^2)-(a\mathbb{E}(X))^2\\
+	&= a^2\cdot (\mathbb{E}(X^2)-(\mathbb{E}(X)^2))=a^2\cdot Var(X)
+	\end{align*}
+	
+	\begin{align*}
+	\text{zu zeigen: } Var(x+b)&=Var(X)\\
+	Var(x+b) &=\mathbb{E}(\underbrace{(X+b)^2}_{X^2+2bX+b^2})-\underbrace{(\mathbb{E}(X+b))^2}_{(\mathbb{E}(X)+b)^2}\\
+	&= \mathbb{E}(X^2)+2b\mathbb{E}(X)+b^2-\left(\left(\mathbb{E}\left(X\right)\right)^2+2b\mathbb{E}\left(X\right)+b^2\right)
+	\end{align*}		
+
+	\subsection{Lemma Tschebyscheff-Menge}
+	Sei $X$ eine reelle, diskrete Zufallsvariable mit $\mathbb{E}(X)=,$ und der Varianz $Var(X)=v$. Dann gilt für jedes $\epsilon >0$:
+	$$P\left(|X-m|\geq\epsilon\right)\leq\frac{Var(X)}{\epsilon^2}$$
+	\paragraph{Beweis:}
+	Es ist zu zeigen $Var(X)\geq\epsilon^2\cdot P(|X-m|\geq\epsilon)$
+	Sei $\tilde{X}:=(X-m)^2$ wobei zu beachten ist, dass $\tilde{X}\geq 0$
+	$$Var(X)=\mathbb{E}(\tilde{X})=\sum_{\tilde{x}\in\tilde{\Omega}}\tilde{x} \cdot 
+P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\tilde{x}\})$$
+	wobei $M\subseteq\tilde{\Omega}$, speziell $M:=\{\tilde{X}\geq\epsilon^2\}$ 
+	
+	
+	
+	
+	
+	
+	
+	
 \end{document}
