@@ -1425,7 +1425,7 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	\label{bernoulliGGZ}
 	Sei $p\in(0,1)$. Seien $X_i \sim B_p$ , $i\in\mathbb{N}$ und 
 	$$\bar{S_n}:=\frac{1}{2}\sum_{i=1}^{n}X_i \: , \quad n\in\mathbb{N}$$
-	Dann gilt für ein beliebiges $\epsilon >0$:
+	Dann gilt für ein beliebiges $\varepsilon >0$:
 	$$\lim_{n\to\infty} P\left(\left| \bar{S_n}-p\right|\geq\epsilon \right)=0$$	
 	Folgende Resultate gehen in den Beweis von Satz \ref{bernoulliGGZ} ein.
 	\begin{enumerate}
@@ -1452,19 +1452,95 @@ $\mathbb{E}(X) = \sum_{i=1}^n x_i \frac{1}{n} = \frac{1}{n} \sum^n_{i=1}x_i$ ent
 	\end{align*}		
 
 	\subsection{Lemma Tschebyscheff-Menge}
-	Sei $X$ eine reelle, diskrete Zufallsvariable mit $\mathbb{E}(X)=,$ und der Varianz $Var(X)=v$. Dann gilt für jedes $\epsilon >0$:
-	$$P\left(|X-m|\geq\epsilon\right)\leq\frac{Var(X)}{\epsilon^2}$$
+	Sei $X$ eine reelle, diskrete Zufallsvariable mit $\mathbb{E}(X)=,$ und der Varianz $Var(X)=v$. Dann gilt für jedes $\varepsilon >0$:
+	$$P\left(|X-m|\geq\varepsilon\right)\leq\frac{Var(X)}{\varepsilon^2}$$
 	\paragraph{Beweis:}
-	Es ist zu zeigen $Var(X)\geq\epsilon^2\cdot P(|X-m|\geq\epsilon)$
+	Es ist zu zeigen $Var(X)\geq\varepsilon^2\cdot P(|X-m|\geq\varepsilon)$
 	Sei $\tilde{X}:=(X-m)^2$ wobei zu beachten ist, dass $\tilde{X}\geq 0$
 	$$Var(X)=\mathbb{E}(\tilde{X})=\sum_{\tilde{x}\in\tilde{\Omega}}\tilde{x} \cdot 
 P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\tilde{x}\})$$
-	wobei $M\subseteq\tilde{\Omega}$, speziell $M:=\{\tilde{X}\geq\epsilon^2\}$ 
+	wobei $M\subseteq\tilde{\Omega}$, speziell $M:=\{\tilde{X}\geq\varepsilon^2\}$ ist. Dann gilt demzufolge
+	$$\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\tilde{x}\})=\sum_{\tilde{x}\in M} \varepsilon^2 \cdot P_{\tilde{X}}(\{\tilde{x}\})=\varepsilon^2 \cdot \underbrace{P\left(\left(X-m\right)^2\geq\varepsilon^2\right)}_{=|X-m|>\varepsilon}$$
+	\paragraph{Bemerkung:}
+	$$P\left(\left| X-m\right| < \varepsilon\right)\geq 1-\frac{Var(X)}{\varepsilon^2}$$ 
 	
+	\paragraph{Beweis zu Satz \ref{bernoulliGGZ}:}
+	schwache GGZ für Bernoulli-Zufallsvariablen.\\
+	Für $n\in\mathbb{N}$ ist $\bar{S}_n = \frac{1}{n}\sum_{i=1}^n X_i$ und es gilt:
+
+	\begin{align*}
+	P\left(\left| \bar{S}_n -p\right|\geq\varepsilon\right) &= P\left(\left|\bar{S}_n -\mathbb{E}\left(\bar{S}_n\right)\right|\geq\varepsilon\right)\\
+	&\leq \frac{Var(\bar{S}_n)}{\varepsilon^2}\\
+	&= \frac{\frac{1}{n^2} Var(S_n)}{\varepsilon^2}\\
+	&= \frac{p\cdot(1-p)}{n\cdot \varepsilon^2}\lim_{n\rightarrow\infty}
+	\end{align*}		
 	
+	\paragraph{Bemerkung zu vorherigen Beweis:}
+	$$\mathbb{E}\left(\bar{S}_n \right) = \frac{1}{n}\sum_{i=1}^n \underbrace{\mathbb{E}(X_i)}_{=p}=p$$
 	
+	\subsection{Satz}
+	Seien $m\in\mathbb{R}$ und $0<v<+\infty$. Sei $X_i$ , $i\in\mathbb{N}$ eine Folge von Zufallszahlen so dass
+	$$\mathbb{E}(X_i)=m\: ,\quad \forall i\in\mathbb{N} \text{ und }$$
+	$$Var(X_i)=v\: , \quad \forall i \in\mathbb{N}$$
+	Dann gilt für jedes $\varepsilon>0$:
+	$$\lim_{n\rightarrow\infty} P\left(\left|\frac{1}{n}\sum_{i=1}^n X_i - m\right|\leq\varepsilon\right)=0$$
 	
+	\subsection{Lemma}
+	\label{lemma9.5}
+	Seien $n\in\mathbb{N}$ und $X_i$ , $i=1,...,n$ paarweise unabhängige reelle (diskrete) Zufallsvariablen jeweils mit dem Erwartungswert $\mathbb{E}(X_i)=m_i\in\mathbb{R}$ und der Varianz $Var(X_i)=v_i<+\infty$. Dann gilt:
+	$$Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n Var(X_i) = \sum_{i=1}^n v_i$$
 	
+	\subsection{Definition Unkorrelation \& Kovarianz}
+	Zwei Zufallsvariablen $X$ und $Y$ heißen \textit{unkorreliert}, wenn die sogenannte  \textit{Kovarianz}:
+	$$Cov(X,Y):=\mathbb{E}((X-\mathbb{E}(X))\cdot (Y-\mathbb{E}(Y))$$
+	verschwindet. Das heißt, dass $Cov(X,Y)=0$
+	\paragraph{Bemerkung:}
+	\begin{enumerate}
+		\item $Cov(X,X)=\mathbb{E}((X-\mathbb{E}(X))^2) = Var(X)$
+		\item $X$ und $Y$ unabhängig $\Rightarrow$ $X$ und $Y$ unkorreliert (Rückimplikation gilt nicht!)
+	\end{enumerate}
+	
+	\subsection{Satz Gleichheit von Bienaymé}
+	Seien $X_i$ , $i=1,...,n$ paarweise unkorrelierte, reelle und diskrete Zufallsvariablen, dann gilt Satz \ref{lemma9.5} .
+	\paragraph{Beweis:}
+	
+	\begin{align*}
+	Var\left(\sum_{i=1}^n \tilde{X}_i\right) &= Var\left(\sum_{i=1}^n \tilde{X}_i\right)\\
+	&= \mathbb{E}\left(\left(\sum_{i=1}^n \tilde{X}_i \right)^2 \right)\\
+	&= \mathbb{E}\left(\sum_{i,j=1}^n \tilde{X}_i \cdot \tilde{X}_j\right)\\
+	&= \mathbb{E}\left(\sum_{i=1}^n \tilde{X}_i^2 + \sum_{i,j=1\: , \: i\neq j}^n  \tilde{X}_i \tilde{X}_j\right)\\
+	&= \sum_{i=1}^n \underbrace{\mathbb{E}\left(\tilde{X}_i^2\right)}_{Var(\tilde{X}_i} + \mathbb{E}\left(\sum_{i=1\: , \: i\neq j} \tilde{X}_i \tilde{X}_j\right)\\
+	&= \sum_{i=1}^n Var(\tilde{X}) + \sum_{i=1\: , \: i\neq j}\mathbb{E}\left(\tilde{X}_i \tilde{X}_j\right)\\
+	&= \sum_{i=1}^n Var(X_i) 
+	\end{align*}
+	 
+	\section{Reelle Zufallsvariablen}
+	Bis jetzt wurden folgendes betrachtet:\\
+	Die diskreten Spezialfälle:
+	\begin{itemize}
+		\item Zufallsexperiment mit \emph{höchstens abzählbarer} Ergebnismenge
+		\item W-Räume der Gestalt $(\Omega, \mathcal{P}(\Omega),P)$, wobei $\Omega$ \emph{höchstens abzählbar}
+		\item Zufallsvariablen mit \emph{höchstens abzählbaren} Wertebereich
+	\end{itemize}
+	
+	\subsection{Definition}
+	Sei $\Omega$ eine beliebige nicht-leere Menge. Ein System $\mathcal{A}\subseteq\mathcal{P}(\Omega)$ von Teilmengen von $\Omega$ heißt eine \textit{$\sigma$-Algebra in $\Omega$} und Paar $(\Omega,\mathcal{A})$ ein Ereignisraum, wenn $\mathcal{A}$ folgendes erfüllt:
+	\begin{itemize}
+		\item[S1] $\Omega\in\mathcal{A}$
+		\item[S2] $A\in\mathcal{A}\: \Rightarrow$ $A^\complement \in \mathcal{A}$
+		\item[S3] $\bigcup_{i\in\mathbb{N}} A_i \: \in\mathcal{A}$, wenn $A_i\in\mathcal{A}$ , $i\in\mathbb{N}$ 
+	\end{itemize}
+	
+	Jedes System $G$ von Teilmengen von $\Omega$ kann zu einer $\sigma$-Algebra erweitert werden. (trivial $G\rightarrow\mathcal{P}(\Omega)$)\\
+	$\hookrightarrow$ wichtig: Zu jedem $G$ von Teilmengen von $\Omega$ existiert genau eine kleinste $\sigma$-Algebra, die von $G$ erzeugt wird.	Sie wird als die von $G$ erzeugte $\sigma$-Algebra bezeichnet. \\
+	$\hookrightarrow$ Notation: $\sigma(G)$
+	
+	\paragraph{Beispiele:}
+	\begin{enumerate}
+		\item Sei $G:=\{\Omega\}\Rightarrow \: \sigma(G)=\{\Omega,\varnothing\}$
+		\item Sei $\Omega=\mathbb{R}$ und $G:=\{[-1,1]\}\Rightarrow\: \sigma(G)=\{[-1,1],\mathbb{R}\backslash [-1,1],\mathbb{R},\varnothing\}$
+		\item $\Omega$ eine abzählbare Menge, $G:=\{\{\omega\}:\: \omega\in\Omega\}\Rightarrow \: \sigma(G)=\mathcal{P}(\Omega)$
+	\end{enumerate}
 	
 	
 	
