@@ -15,6 +15,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{setspace}
+\usepackage{enumerate}
+
 
 \usepackage[
 top=2.5cm,
@@ -1528,7 +1530,7 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 	\begin{itemize}
 		\item[S1] $\Omega\in\mathcal{A}$
 		\item[S2] $A\in\mathcal{A}\: \Rightarrow$ $A^\complement \in \mathcal{A}$
-		\item[S3] $\bigcup_{i\in\mathbb{N}} A_i \: \in\mathcal{A}$, wenn $A_i\in\mathcal{A}$ , $i\in\mathbb{N}$ 
+		\item[S3] $\displaystyle \bigcup_{i\in\mathbb{N}} A_i \: \in\mathcal{A}$, wenn $A_i\in\mathcal{A}$ , $i\in\mathbb{N}$ 
 	\end{itemize}
 	
 	Jedes System $G$ von Teilmengen von $\Omega$ kann zu einer $\sigma$-Algebra erweitert werden. (trivial $G\rightarrow\mathcal{P}(\Omega)$)\\
@@ -1537,10 +1539,113 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 	
 	\paragraph{Beispiele:}
 	\begin{enumerate}
+	\label{enum10.1}
 		\item Sei $G:=\{\Omega\}\Rightarrow \: \sigma(G)=\{\Omega,\varnothing\}$
 		\item Sei $\Omega=\mathbb{R}$ und $G:=\{[-1,1]\}\Rightarrow\: \sigma(G)=\{[-1,1],\mathbb{R}\backslash [-1,1],\mathbb{R},\varnothing\}$
 		\item $\Omega$ eine abzählbare Menge, $G:=\{\{\omega\}:\: \omega\in\Omega\}\Rightarrow \: \sigma(G)=\mathcal{P}(\Omega)$
 	\end{enumerate}
+	
+	\subsection{Definition Borelsche Sigma-Algebra}
+	\label{defBorelsch}
+	Sei $\Omega = \mathbb{R}$ und $\displaystyle G:=\{[a,b]: \: a,b\in\mathbb{Q}$ und $a<b\}$. Dann heißt $\sigma (G)$ die \textit{Borelsche} $\sigma $-Algebra auf $\mathbb{R}$ und wird mit $\mathcal{B}$ oder $B(\mathbb{R})$ bezeichnet.	
+	
+	\paragraph{Bemerkung:}
+	\begin{itemize}
+		\item $\displaystyle B^1 \subsetneq \mathcal{P}(\mathbb{R})$
+		\item $\displaystyle \tilde{G}:= \left\{(-\infty,c]: \: c\in\mathbb{R}\right\} \Rightarrow \sigma(\tilde{G})=\sigma(G)=B^1$
+	\end{itemize}
+	
+	
+	\subsection{Definition }
+	Seien $\Omega$ eine beliebige nicht-leere Menge und $\mathcal{A}$ eine $\sigma$-Algebra in $\Omega$. Eine Abbildung $P:\mathcal{A}\rightarrow[0,1]$ heißt W-Maß auf $\mathcal{A}$, wenn sie folgende Eigenschaften besitzt:
+	\begin{itemize}
+		\item[W1] $P(\Omega) = 1$ \quad (Normierung)
+		\item[W2] $\displaystyle P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$ wenn: 
+		\begin{itemize}
+			\item $A_i\in\mathcal{A}$ , $i\in\mathbb{N}$ und
+			\item $A_i\cap A_j =\varnothing$ für $i\neq j$
+		\end{itemize}
+	\end{itemize}
+	Wichtige Eigenschaften von W-Maßen ( analog zum diskreten Fall):
+	\begin{enumerate}[i]
+		\item $P(\varnothing)=0$
+		\item $P(A^\complement )= 1-P(A)$ , $\forall A\in \mathcal{A}$
+		\item $P(A)\leq P(B)$ wenn $A\subseteq B$ \quad $(\forall A,B\in\mathcal{A})$\\
+		( Monotonie )
+	\end{enumerate}
+	\paragraph{$\hookrightarrow$ Frage:}
+	Gibt es Unterschiede zum diskreten Fall?
+	\paragraph{Diskussion:}
+	Verallgemeinerung des Konzeptes Zähldichte/Gewichtsfunktion?
+	\paragraph{Antwort:}
+	`` Existiert nicht immer ''
+	
+	\paragraph{Betrachtung von W-Maßen auf $\mathcal{B}^1$:}
+	\begin{itemize}
+		\item \textit{Lebesgue}-integrierbare Funktion $f:\: \mathbb{R}\rightarrow[0,1]$ mit
+		$$\int f(x) dx = 1$$
+		stellt eine Dichte von einem W-Maß dar:
+		$$P(E):=\int_E f(x) dx \quad , \quad \forall E\in \mathcal{B}^1$$
+		\item Standardbeispiel eines W-Maßes auf $\mathcal{B}^1$ , welches keine Dichte besitzt:
+		\[
+ 	\delta_{x_o}: \: \mathcal{B}^1\rightarrow [0,1] \quad \sigma_{x_o}(E)=\left\{\begin{array}{lr}
+ 		1 &, x_o\in E\\
+ 		0 &,\text{sonst }
+ 	   \end{array}\right.
+ 		\]
+			
+	\end{itemize}
+	
+	\subsection{Definition Reeller Wahrscheinlichkeitsraum}
+	Seien $\Omega$ eine beliebige Menge $(\Omega\neq\varnothing)$ , $\mathcal{A}$ eine $\sigma$-Algebra in $\Omega$ und $P: \mathcal{A}\rightarrow[0,1]$ ein W-Maß, dann heißt $(\Omega, \mathcal{A},P)$ ein \textit{W-Raum}.\\
+	Eine reelle Zufallsvariable $X$ nimmt Werte in $\Omega=\mathbb{R}$ beziehungsweise in einer Borelschen Menge $\Omega\in\mathcal{B}^1$ an.
+	Man wird insbesondere Ereignisse wie
+	$$\left\{ X\leq c\right\} \: , \: \{X\geq c\} \: , \: \{X\in J\}$$
+	eine Wahrscheinlichkeit zuordnen wollen, wobei $c\in\mathbb{R}$ , $J$ Intervall in $\mathbb{R}$.\\
+	$\hookrightarrow$ Solche Ereignisse bilden gerade das Mengensystem $\tilde{G}$, welches die Borelsche $\sigma$-Algebra $\mathcal{B}^1$ erzeugt.
+	
+	\subsection{Definition Reelle Zufallsvariable}
+	Sei $(\Omega ,\mathcal{A}, P)$ ein W-Raum. Eine Abbildung:
+	$$X:\Omega\rightarrow\mathbb{R}$$
+	heißt eine \textit{reelle Zufallsvariable}, wenn gilt:
+	$$X^{-1}\left((-\infty, c]\right) \in \mathcal{A} \: , \quad \forall c \in\mathbb{R}$$
+	Die Verteilung $P_X$ von $X$ ist definiert durch
+	$$P_X(E):= P\left(X^{-1} (E)\right) \quad \forall E\in\mathcal{B}^-1$$
+	
+	\subsection{Definition Verteilungsfunktion}
+	Sei $P$ ein W-Maß auf $\mathcal{B}^1$. Die Funktion 
+	$$F:\mathbb{R}\rightarrow\mathbb{R} \: , \quad c\longmapsto P\left((-\infty,c]\right)$$
+	heißt \textit{Verteilungsfunktion} von $P$. Für eine reelle Zufallsvariable $X$ ist die Verteilungsfunktion $F_X$ definiert durch:
+	$$F_X:\mathbb{R}\rightarrow[0,1], \quad c\longmapsto F_X(c):=P(X\subseteq c)$$
+	
+	
+	
+	
+	
+	
+	\pagebreak
+	
+	\part{Addendum}
+	
+	\section*{Mengensysteme}
+	Sein $\Omega$ eine beliebige Menge ($\Omega \neq \varnothing$): $\displaystyle G\subset \mathcal{P}(\Omega) \Rightarrow \sigma(G) = \cap_{G\subseteq \mathcal{A}} \mathcal{A}$
+	\begin{enumerate}
+		\item $\displaystyle G:=\{ \Omega \} \Rightarrow \sigma(G)=\{\Omega ,\varnothing\}$
+		\item - 4. siehe Beispiele in \ref{enum10.1} 
+	\end{enumerate}
+	\paragraph{Beispiel (5):}
+	Sei $\Omega\neq\varnothing$ beliebig. Betrachte $G:=\{ M_1 , ..., M_n\}$ eine disjunkte Zerlegung von $\Omega$ in nicht-leere Teilmengen, d.h.
+	$$\bigcup_{i=1}^n M_i = \Omega$$
+	Dann gilt: $\displaystyle \left| \sigma(G)\right| = 2^n$
+	\paragraph{Begründung:}
+	$$f:G \rightarrow M \: , \: M_i \longmapsto f(M_i):=m_i \text{ wobei } M:=\{m_1,...,m_n\}$$
+	$$\left\{\underbrace{f(E)}_{\subseteq M} : \: E\in\sigma (G)\right\} \subseteq \mathcal P(\Omega)$$	
+	Umgekehrt gilt: $\displaystyle \left\{f^{-1}(K): \: K\in\mathcal{P}(M)\right\}\subseteq \sigma(G)$ \\
+	$P(M)$ und $\sigma(G)$ können bijektiv aufeinander abgebildet werden. \\
+	$\Rightarrow \quad \mathcal{P}(M)$ und $\sigma (G)$ gleichmächtig, d.h. $|\sigma (G)|=|\mathcal{P}(G)|=2^{|M|}=2^n$
+	\paragraph{Beispiel (6):}	
+	Siehe Unterpunkt \ref{defBorelsch} .
+	
 	
 	
 	
