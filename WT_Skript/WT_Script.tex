@@ -1494,7 +1494,7 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 	
 	\subsection{Definition Unkorrelation \& Kovarianz}
 	Zwei Zufallsvariablen $X$ und $Y$ heißen \textit{unkorreliert}, wenn die sogenannte  \textit{Kovarianz}:
-	$$Cov(X,Y):=\mathbb{E}((X-\mathbb{E}(X))\cdot (Y-\mathbb{E}(Y))$$
+	$$Cov(X,Y):=\mathbb{E}\left(\left(X-\mathbb{E}\left(X\right)\right)\cdot \left(Y-\mathbb{E}\left(Y\right)\right)\right)$$
 	verschwindet. Das heißt, dass $Cov(X,Y)=0$
 	\paragraph{Bemerkung:}
 	\begin{enumerate}
@@ -1525,7 +1525,7 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 		\item Zufallsvariablen mit \emph{höchstens abzählbaren} Wertebereich
 	\end{itemize}
 	
-	\subsection{Definition}
+	\subsection{Definition Sigma-Algebra}
 	Sei $\Omega$ eine beliebige nicht-leere Menge. Ein System $\mathcal{A}\subseteq\mathcal{P}(\Omega)$ von Teilmengen von $\Omega$ heißt eine \textit{$\sigma$-Algebra in $\Omega$} und Paar $(\Omega,\mathcal{A})$ ein Ereignisraum, wenn $\mathcal{A}$ folgendes erfüllt:
 	\begin{itemize}
 		\item[S1] $\Omega\in\mathcal{A}$
@@ -1533,26 +1533,26 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 		\item[S3] $\displaystyle \bigcup_{i\in\mathbb{N}} A_i \: \in\mathcal{A}$, wenn $A_i\in\mathcal{A}$ , $i\in\mathbb{N}$ 
 	\end{itemize}
 	
-	Jedes System $G$ von Teilmengen von $\Omega$ kann zu einer $\sigma$-Algebra erweitert werden. (trivial $G\rightarrow\mathcal{P}(\Omega)$)\\
-	$\hookrightarrow$ wichtig: Zu jedem $G$ von Teilmengen von $\Omega$ existiert genau eine kleinste $\sigma$-Algebra, die von $G$ erzeugt wird.	Sie wird als die von $G$ erzeugte $\sigma$-Algebra bezeichnet. \\
-	$\hookrightarrow$ Notation: $\sigma(G)$
+	Jedes System $\mathcal{G}$ von Teilmengen von $\Omega$ kann zu einer $\sigma$-Algebra erweitert werden. (trivial $\mathcal{G}\rightarrow\mathcal{P}(\Omega)$)\\
+	$\hookrightarrow$ wichtig: Zu jedem $\mathcal{G}$ von Teilmengen von $\Omega$ existiert genau eine kleinste $\sigma$-Algebra, die von $\mathcal{G}$ erzeugt wird.	Sie wird als die von $\mathcal{G}$ erzeugte $\sigma$-Algebra bezeichnet. \\
+	$\hookrightarrow$ Notation: $\sigma(\mathcal{G})$
 	
 	\paragraph{Beispiele:}
 	\begin{enumerate}
 	\label{enum10.1}
-		\item Sei $G:=\{\Omega\}\Rightarrow \: \sigma(G)=\{\Omega,\varnothing\}$
-		\item Sei $\Omega=\mathbb{R}$ und $G:=\{[-1,1]\}\Rightarrow\: \sigma(G)=\{[-1,1],\mathbb{R}\backslash [-1,1],\mathbb{R},\varnothing\}$
-		\item $\Omega$ eine abzählbare Menge, $G:=\{\{\omega\}:\: \omega\in\Omega\}\Rightarrow \: \sigma(G)=\mathcal{P}(\Omega)$
+		\item Sei $\mathcal{G}:=\{\Omega\}\Rightarrow \: \sigma(\mathcal{G})=\{\Omega,\varnothing\}$
+		\item Sei $\Omega=\mathbb{R}$ und $\mathcal{G}:=\{[-1,1]\}\Rightarrow\: \sigma(\mathcal{G})=\{[-1,1],\mathbb{R}\backslash [-1,1],\mathbb{R},\varnothing\}$
+		\item $\Omega$ eine abzählbare Menge, $\mathcal{G}:=\{\{\omega\}:\: \omega\in\Omega\}\Rightarrow \: \sigma(\mathcal{G})=\mathcal{P}(\Omega)$
 	\end{enumerate}
 	
 	\subsection{Definition Borelsche Sigma-Algebra}
 	\label{defBorelsch}
-	Sei $\Omega = \mathbb{R}$ und $\displaystyle G:=\{[a,b]: \: a,b\in\mathbb{Q}$ und $a<b\}$. Dann heißt $\sigma (G)$ die \textit{Borelsche} $\sigma $-Algebra auf $\mathbb{R}$ und wird mit $\mathcal{B}$ oder $B(\mathbb{R})$ bezeichnet.	
+	Sei $\Omega = \mathbb{R}$ und $\displaystyle \mathcal{G}:=\{[a,b]: \: a,b\in\mathbb{Q}$ und $a<b\}$. Dann heißt $\sigma (\mathcal{G})$ die \textit{Borelsche} $\sigma $-Algebra auf $\mathbb{R}$ und wird mit $\mathcal{B}$ oder $B(\mathbb{R})$ bezeichnet.	
 	
 	\paragraph{Bemerkung:}
 	\begin{itemize}
 		\item $\displaystyle B^1 \subsetneq \mathcal{P}(\mathbb{R})$
-		\item $\displaystyle \tilde{G}:= \left\{(-\infty,c]: \: c\in\mathbb{R}\right\} \Rightarrow \sigma(\tilde{G})=\sigma(G)=B^1$
+		\item $\displaystyle \tilde{\mathcal{G}}:= \left\{(-\infty,c]: \: c\in\mathbb{R}\right\} \Rightarrow \sigma(\tilde{\mathcal{G}})=\sigma(\mathcal{G})=B^1$
 	\end{itemize}
 	
 	
