@@ -41,7 +41,7 @@ heightrounded]{geometry}
 
 
 
-\renewcommand{\thefootnote}{\roman{footnote}}
+%\renewcommand{\thefootnote}{\roman{footnote}}
 
 %\titleformat{\section}
 %  {\normalfont\large\bfseries}
@@ -1633,8 +1633,60 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 	\paragraph{Notation:} $\mathcal{N}_{m,v}$
 	\paragraph{Bemerkung:}
 	$\mathcal{N}_{m=0,v=1}$ heißt \textit{Standardabweichung}.
+
+
+	\pagebreak	
+	\section{Zentraler Grenzwertsatz}
+	$$P\left(\left| \frac{1}{n}\sum_{i=1}^n X_i -p \right| <\epsilon\right) \xrightarrow[n\rightarrow\infty]{}1$$
+	$$\Leftrightarrow \:\: P\left( \left| \sum_{i=1}^n X_i -np\right| > \epsilon \cdot n \right) \xrightarrow[n\to\infty]{} 1$$	
+	\subsection{Satz von Moivre-Laplace}
+	Seien $X_i$ , $i\in\mathbb{N}$ paarweise unabhängige, Bernoulli-verteilte Zufallsvariablen jeweils mit der Erfolgswahrscheinlichkeit $p\in(0,1)$ , das heißt:
+	$$X_i \sim \mathcal{B}_p \: , \: \forall i\in\mathbb{N}$$
+	Dann gilt für alle $a,b\in\mathbb{R}$ mit $a<b$:
+	\begin{equation}
+	\label{satzMoivreLaplaceEq01}
+	\lim_{n\to\infty} P(a\leq S_n^{*} \leq b) = \frac{1}{\sqrt{2\pi}} \int_a^b e^{-\frac{x^2}{2}} dx
+	\end{equation}
+	wobei
+	$$S_n^{*} := \frac{S_n - np}{\sqrt{n\cdot p \cdot (1-p)}} := \frac{\sum_{i=1}^n X_i - np}{\sqrt{n\cdot p \cdot (1-p)}}$$
+	\paragraph{Diskussion:}
+	\begin{itemize}
+		\item \textbf{Linke Seite} von Gleichung \ref{satzMoivreLaplaceEq01} : \\
+		$S_n \sim \mathcal{B}_{n,p} \Rightarrow$
+		\begin{enumerate}
+			\item $\mathbb{E}(S_n)=n\cdot p$
+			\item $Var(S_n) = n \cdot p \cdot (1-p)$
+		\end{enumerate}
+		$\hookrightarrow \mathbb{E}(S_n^{*})=0$ und $Var(S_n^{*})=1$\quad \footnote{$Var(aX)=a^2\cdot Var X$}
+		\item \textbf{Rechte Seite} von Gleichung \ref{satzMoivreLaplaceEq01} : \\
+		$\displaystyle x\longmapsto \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} = \phi_{0,1}(x)$  ... Dichtefunktion der Standardnormalverteilung $\mathcal{N}_{0,1}$
+		$\displaystyle \hookrightarrow \underbrace{\int_a^b \phi_{0,1} (x)dx}_{=F_X(b)-F_X(a)} = P(a\leq X \leq b)$, wenn $X\sim\mathcal{N}_{0,1}$
+	\end{itemize}
+
+	Der Satz von Moivre-Laplace begründet die Normalapproximation der Binomialverteilung. Die Zähldichte der Binomialverteilung lässt sich für große $n$ ``gut'' durch die Dichtefunktion der Normalverteilung approximieren.\\
+	\textit{Standardisierung}, das heißt der Übergang von $S_n \rightarrow S_n^{*}$ bewirkt 
+	$$h_{n,p}^{*} (l) := \sqrt{n\cdot p \cdot (1-p)} \mathcal{B}_{n,p}(\{l\cdot \sqrt{n\cdot p\cdot (1-p)} -np\})$$
+	Anders ausgedrückt
+	$$k=0,1,...m, \longmapsto l(k) = \frac{k-np}{\sqrt{n\cdot p(1-p)}}$$
+	$$\text{und } \: h_{n,p}(k) = \mathcal{B}_{n,p} (\{k\}) \longmapsto h_{n,p}^{*}(\{l(k)\})$$
+	$\hookrightarrow$ Ziel: Verallgemeinerung des Satzes von Moivre-Laplace. Diese basiert auf dem Konzept der \textit{Konvergenz in Verteilung}.
 	
+	\subsection{Definition Konvergenz in Verteilung}
+	Sei $X_i$ , $i\in\mathbb{N}$ eine Folge von reellen Zufallsvariablen $X_i$ jeweils mit der Verteilungsfunktion $F_{X_i}$. Die Folge \textbf{konvergiert in Verteilung} gegen eine reelle Zufallsvariable $X$ mit Verteilungsfunktion $F_X$, wenn
+	\begin{center}
+	$\lim_{i\to\infty} F_{X_i}(c)=F_X(c)$ an allen Stetigkeitsstellen $c$ von $F_X$. 	
+	\end{center}
 	
+	\paragraph{Notation:} $X_i \xrightarrow[]{d} X \quad (i\to\infty)$
+	
+	\subsection{Satz}
+	Sei $X_i$ , $i\in\mathbb{N}$ unabhängige, identisch verteilte Zufallsvariablen mit
+	\begin{enumerate}
+		\item $\mathbb{E}(X_i) = m \quad (\forall i\in\mathbb{N})$ und 
+		\item $Var(X_i)=v<+\infty \quad (\forall i\in\mathbb{N})$
+	\end{enumerate}	 
+	Dann gilt
+	$$S_n^{*} := \frac{1}{\sqrt{n}} \sum_{i=1}^n \frac{X_i -m}{\sqrt{v}} \xrightarrow[]{d} X\sim\mathcal{N}_{0,1}$$
 	
 	\pagebreak
 	
