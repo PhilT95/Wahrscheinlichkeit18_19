@@ -1753,4 +1753,33 @@ P_{\tilde{X}}(\{\tilde{x}\})\geq\sum_{\tilde{x}\in M} \tilde{x}P_{\tilde{X}}(\{\
 	
 	
 	
+	\section*{Beispiele}
+	\subsection*{Beispiel 1}
+	200 Studierende, 3\% haben unerlaubte Hilfsmittel dabei\\
+	10 Personen, zufällig ausgewählt, werden kontrolliert
+	\begin{itemize}
+	\item[a)] Herr Müller hofft, nicht ertappt zu werden\\
+	Risiko = ? $\tilde{=}$ Wahrscheinlichkeit für das Ereignis, dass Herr Müller kontrolliert wird\\
+	$\hookrightarrow$ Stellen sie zunächst ein geeignetes Wahrscheinlichkeitsmodell auf
+	\item[b)] $X$: Anzahl der ertappten Personen\\
+	Frage: Was ist die Verteilung $P_X$ von $X$?
+	\end{itemize}
+	
+	\paragraph{Zu a)} Zufallsexperiment:\\
+	$\mathcal{e}: $ 10 Personen von den 200 Anwesenden werden zufällig ausgesucht\\
+	$\hookrightarrow$ Zugehörige Ergebnismenge
+	$$\Omega:=\{M\subseteq \{1,...,200\}| \quad |M|=10\}$$
+	$$|\Omega |= \binom{200}{10}$$
+	$\hookrightarrow$ W-Raum $(\Omega,\mathcal{P}(\Omega),P=\mathcal{U}_{\Omega})$, das heißt
+	$$P(E)=\mathcal{U}_{\Omega}(E)=\frac{|E|}{\binom{200}{10}} \quad \forall E\in\mathcal{P}(\Omega)$$
+	$\tilde{E}$: Herr Müller wird ertappt\\
+	$\hookrightarrow |\tilde{E}|=\binom{199}{9}$
+	$$P(\tilde{E})=\frac{\binom{199}{9}}{\binom{200}{10}} = \frac{\binom{199}{9}}{\frac{200}{10}\cdot \binom{199}{9}}=\frac{10}{200}$$ 
+	
+	\paragraph{zu b)}
+	$X\sim \mathcal{H}_{m,k,N-k}$ , das heißt hypergeometrisch verteilt, \textbf{wobei}:
+	$$m=10 , k=(3\% \text{ und } 200)=6 \: , N=200$$
+	
+	
+	
 \end{document}
